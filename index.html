@@ -1,964 +1,1196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>English Rosco - B1+/B2</title>
+<title>English Rosco - B1+/B2 Challenge</title>
 
-    <style>
+<style>
 
-        /* =====================================================
-           GENERAL
-        ===================================================== */
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100%;
-        }
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
 
-        body {
-            min-height: 100vh;
+body {
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    min-height: 100vh;
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    #1e3a8a 0%,
-                    #0f172a 65%
-                );
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-            color: #ffffff;
+    color: white;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #312e81 0%,
+            #172554 28%,
+            #020617 75%
+        );
 
-            padding: 20px;
-        }
+    overflow-x: hidden;
+}
 
 
-        /* =====================================================
-           MAIN CONTAINER
-        ===================================================== */
+/* =========================================================
+   CONTEST LIGHTS
+========================================================= */
 
-        .app {
-            width: 100%;
-            max-width: 1200px;
+body::before {
 
-            min-height: 90vh;
+    content: "";
 
-            background: rgba(15, 23, 42, 0.97);
+    position: fixed;
 
-            border: 1px solid #334155;
+    inset: 0;
 
-            border-radius: 24px;
+    pointer-events: none;
 
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.45);
+    background:
+        radial-gradient(
+            ellipse at 10% 20%,
+            rgba(59,130,246,.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            ellipse at 90% 20%,
+            rgba(168,85,247,.22),
+            transparent 30%
+        );
 
-            padding: 25px;
+    z-index: 0;
+}
 
-            overflow: hidden;
-        }
 
+/* =========================================================
+   APP
+========================================================= */
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+.app {
 
-        .header {
-            text-align: center;
+    position: relative;
 
-            margin-bottom: 10px;
-        }
+    z-index: 1;
 
-        .header h1 {
-            margin: 0;
+    width: 100%;
 
-            font-size: clamp(30px, 5vw, 46px);
+    max-width: 1250px;
 
-            letter-spacing: 1px;
-        }
+    min-height: 100vh;
 
-        .subtitle {
-            margin-top: 6px;
+    margin: auto;
 
-            color: #94a3b8;
+    padding: 25px 25px 35px;
 
-            font-size: 16px;
-        }
+}
 
 
-        /* =====================================================
-           START SCREEN
-        ===================================================== */
+/* =========================================================
+   HEADER
+========================================================= */
 
-        .start-screen {
-            min-height: 70vh;
+.header {
 
-            display: flex;
-            flex-direction: column;
+    text-align: center;
 
-            justify-content: center;
-            align-items: center;
+    margin-bottom: 5px;
 
-            text-align: center;
+}
 
-            padding: 30px;
-        }
+.header h1 {
 
-        .start-screen h2 {
-            font-size: 34px;
+    margin: 0;
 
-            margin-bottom: 15px;
-        }
+    font-size:
+        clamp(32px, 5vw, 58px);
 
-        .start-description {
-            max-width: 700px;
+    font-weight: 900;
 
-            color: #cbd5e1;
+    letter-spacing: 3px;
 
-            font-size: 19px;
+    text-transform: uppercase;
 
-            line-height: 1.65;
+    text-shadow:
+        0 0 12px rgba(96,165,250,.8),
+        0 0 35px rgba(59,130,246,.4);
 
-            margin-bottom: 30px;
-        }
+}
 
-        .start-info {
-            display: flex;
+.subtitle {
 
-            flex-wrap: wrap;
+    margin-top: 6px;
 
-            justify-content: center;
+    color: #c4b5fd;
 
-            gap: 12px;
+    font-size: 17px;
 
-            margin-bottom: 35px;
-        }
+    letter-spacing: 2px;
 
-        .info-chip {
-            background: #1e293b;
+    text-transform: uppercase;
 
-            border: 1px solid #475569;
+}
 
-            border-radius: 30px;
 
-            padding: 10px 18px;
+/* =========================================================
+   START SCREEN
+========================================================= */
 
-            color: #cbd5e1;
-        }
+.start-screen {
 
+    min-height: 80vh;
 
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
+    display: flex;
 
-        button {
-            border: none;
+    flex-direction: column;
 
-            border-radius: 10px;
+    align-items: center;
 
-            padding: 13px 22px;
+    justify-content: center;
 
-            font-size: 17px;
+    text-align: center;
 
-            font-weight: 700;
+}
 
-            cursor: pointer;
+.start-screen h2 {
 
-            transition:
-                transform 0.15s ease,
-                filter 0.15s ease;
-        }
+    font-size: 38px;
 
-        button:hover {
-            transform: translateY(-2px);
+    margin: 0 0 15px;
 
-            filter: brightness(1.1);
-        }
+}
 
-        button:active {
-            transform: translateY(0);
-        }
+.start-description {
 
-        button:disabled {
-            opacity: 0.45;
+    max-width: 720px;
 
-            cursor: not-allowed;
+    color: #cbd5e1;
 
-            transform: none;
+    line-height: 1.7;
 
-            filter: none;
-        }
+    font-size: 18px;
 
-        .start-button {
-            background: #2563eb;
+}
 
-            color: white;
+.info-container {
 
-            font-size: 20px;
+    display: flex;
 
-            padding: 16px 35px;
-        }
+    flex-wrap: wrap;
 
-        .check-button {
-            background: #2563eb;
+    justify-content: center;
 
-            color: white;
-        }
+    gap: 10px;
 
-        .pass-button {
-            background: #ca8a04;
+    margin: 25px 0 35px;
 
-            color: white;
-        }
+}
 
-        .restart-button {
-            background: #7c3aed;
+.info-chip {
 
-            color: white;
-        }
+    padding: 10px 17px;
 
+    border-radius: 30px;
 
-        /* =====================================================
-           GAME SCREEN
-        ===================================================== */
+    background: rgba(30,41,59,.85);
 
-        .game-screen {
-            display: none;
-        }
+    border: 1px solid #475569;
 
+    color: #cbd5e1;
 
-        /* =====================================================
-           SCOREBOARD
-        ===================================================== */
+}
 
-        .scoreboard {
-            display: flex;
+.start-button {
 
-            justify-content: center;
+    padding: 17px 40px;
 
-            align-items: center;
+    font-size: 21px;
 
-            gap: 50px;
+    font-weight: 800;
 
-            margin: 10px 0 5px;
+    border: none;
 
-            font-size: 20px;
-        }
+    border-radius: 12px;
 
-        .score-value {
-            color: #4ade80;
+    cursor: pointer;
 
-            font-weight: 700;
-        }
+    color: white;
 
-        .remaining-value {
-            color: #facc15;
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
 
-            font-weight: 700;
-        }
+    box-shadow:
+        0 8px 30px rgba(59,130,246,.35);
 
+    transition: .2s;
 
-        /* =====================================================
-           ROSCO
-        ===================================================== */
+}
 
-        .rosco-container {
-            position: relative;
+.start-button:hover {
 
-            width: min(650px, 82vw);
+    transform: translateY(-3px);
 
-            aspect-ratio: 1 / 1;
+    box-shadow:
+        0 12px 40px rgba(59,130,246,.55);
 
-            margin: 5px auto 20px;
-        }
+}
 
-        .rosco {
-            position: absolute;
 
-            inset: 0;
-        }
+/* =========================================================
+   GAME
+========================================================= */
 
-        .letter {
-            position: absolute;
+.game-screen {
 
-            width: 58px;
-            height: 58px;
+    display: none;
 
-            border-radius: 50%;
+}
 
-            display: flex;
 
-            justify-content: center;
-            align-items: center;
+/* =========================================================
+   SCOREBOARD
+========================================================= */
 
-            transform:
-                translate(-50%, -50%);
+.scoreboard {
 
-            background: #334155;
+    display: flex;
 
-            border: 3px solid #64748b;
+    justify-content: center;
 
-            color: white;
+    align-items: center;
 
-            font-size: 21px;
+    gap: 70px;
 
-            font-weight: 700;
+    margin: 10px 0 5px;
 
-            transition:
-                all 0.25s ease;
+}
 
-            user-select: none;
-        }
+.score-box {
 
-        .letter.current {
-            background: #2563eb;
+    min-width: 130px;
 
-            border-color: #bfdbfe;
+    text-align: center;
 
-            box-shadow:
-                0 0 15px #3b82f6,
-                0 0 35px rgba(59,130,246,0.7);
+}
 
-            transform:
-                translate(-50%, -50%)
-                scale(1.18);
+.score-label {
 
-            z-index: 5;
-        }
+    color: #94a3b8;
 
-        .letter.correct {
-            background: #16a34a;
+    font-size: 13px;
 
-            border-color: #86efac;
-        }
+    text-transform: uppercase;
 
-        .letter.wrong {
-            background: #dc2626;
+    letter-spacing: 2px;
 
-            border-color: #fca5a5;
-        }
+}
 
-        .letter.passed {
-            background: #ca8a04;
+.score-number {
 
-            border-color: #fde047;
-        }
+    font-size: 30px;
 
+    font-weight: 900;
 
-        /* =====================================================
-           ROSCO CENTER
-        ===================================================== */
+}
 
-        .rosco-center {
-            position: absolute;
+.score-number.green {
 
-            top: 50%;
-            left: 50%;
+    color: #4ade80;
 
-            transform:
-                translate(-50%, -50%);
+}
 
-            width: 215px;
-            height: 215px;
+.score-number.yellow {
 
-            border-radius: 50%;
+    color: #facc15;
 
-            background: #020617;
+}
 
-            border: 3px solid #334155;
 
-            display: flex;
+/* =========================================================
+   ROSCO
+========================================================= */
 
-            flex-direction: column;
+.rosco-container {
 
-            justify-content: center;
+    position: relative;
 
-            align-items: center;
+    width: min(650px, 88vw);
 
-            text-align: center;
+    aspect-ratio: 1 / 1;
 
-            box-shadow:
-                inset 0 0 35px rgba(0,0,0,0.5);
-        }
+    margin: 5px auto 15px;
 
-        .center-label {
-            color: #64748b;
+}
 
-            font-size: 13px;
+.rosco {
 
-            letter-spacing: 2px;
+    position: absolute;
 
-            margin-bottom: 5px;
-        }
+    inset: 0;
 
-        .current-letter {
-            font-size: 72px;
+}
 
-            font-weight: 800;
+.letter {
 
-            color: #60a5fa;
+    position: absolute;
 
-            line-height: 1;
-        }
+    width: 56px;
 
+    height: 56px;
 
-        /* =====================================================
-           QUESTION PANEL
-        ===================================================== */
+    transform:
+        translate(-50%, -50%);
 
-        .question-panel {
-            max-width: 850px;
+    border-radius: 50%;
 
-            margin: 0 auto;
+    display: flex;
 
-            background: #1e293b;
+    justify-content: center;
 
-            border: 1px solid #334155;
+    align-items: center;
 
-            border-radius: 18px;
+    background:
+        linear-gradient(
+            145deg,
+            #334155,
+            #1e293b
+        );
 
-            padding: 25px;
+    border: 3px solid #64748b;
 
-            text-align: center;
-        }
+    font-size: 20px;
 
-        .question-label {
-            color: #94a3b8;
+    font-weight: 900;
 
-            font-size: 15px;
+    transition: .25s;
 
-            margin-bottom: 12px;
-        }
+    user-select: none;
 
-        .question {
-            min-height: 75px;
+}
 
-            display: flex;
+.letter.current {
 
-            justify-content: center;
-            align-items: center;
+    background:
+        linear-gradient(
+            145deg,
+            #3b82f6,
+            #1d4ed8
+        );
 
-            font-size: 24px;
+    border-color: #bfdbfe;
 
-            line-height: 1.45;
-        }
+    transform:
+        translate(-50%, -50%)
+        scale(1.22);
 
+    box-shadow:
+        0 0 15px #60a5fa,
+        0 0 40px rgba(59,130,246,.8);
 
-        /* =====================================================
-           ANSWER AREA
-        ===================================================== */
+    z-index: 5;
 
-        .answer-area {
-            display: flex;
+}
 
-            justify-content: center;
+.letter.correct {
 
-            align-items: stretch;
+    background:
+        linear-gradient(
+            145deg,
+            #22c55e,
+            #15803d
+        );
 
-            gap: 10px;
+    border-color: #86efac;
 
-            margin-top: 20px;
-        }
+}
 
-        .answer-input {
-            flex: 1;
+.letter.wrong {
 
-            max-width: 560px;
+    background:
+        linear-gradient(
+            145deg,
+            #ef4444,
+            #991b1b
+        );
 
-            min-width: 0;
+    border-color: #fca5a5;
 
-            padding: 14px 16px;
+}
 
-            border-radius: 10px;
+.letter.passed {
 
-            border: 2px solid #475569;
+    background:
+        linear-gradient(
+            145deg,
+            #eab308,
+            #a16207
+        );
 
-            background: #020617;
+    border-color: #fde047;
 
-            color: white;
+}
 
-            font-size: 19px;
 
-            text-align: center;
+/* =========================================================
+   CENTER
+========================================================= */
 
-            outline: none;
-        }
+.rosco-center {
 
-        .answer-input::placeholder {
-            color: #64748b;
-        }
+    position: absolute;
 
-        .answer-input:focus {
-            border-color: #60a5fa;
+    top: 50%;
+    left: 50%;
 
-            box-shadow:
-                0 0 0 3px rgba(59,130,246,0.15);
-        }
+    transform:
+        translate(-50%, -50%);
 
-        .answer-input:disabled {
-            opacity: 0.7;
-        }
+    width: 225px;
+    height: 225px;
 
+    border-radius: 50%;
 
-        /* =====================================================
-           FEEDBACK
-        ===================================================== */
+    display: flex;
 
-        .feedback {
-            min-height: 38px;
+    flex-direction: column;
 
-            margin-top: 15px;
+    justify-content: center;
 
-            font-size: 21px;
+    align-items: center;
 
-            font-weight: 700;
-        }
+    text-align: center;
 
-        .feedback.correct {
-            color: #4ade80;
-        }
+    background:
+        radial-gradient(
+            circle,
+            #0f172a,
+            #020617 70%
+        );
 
-        .feedback.wrong {
-            color: #f87171;
-        }
+    border:
+        3px solid #334155;
 
-        .feedback.pass {
-            color: #facc15;
-        }
+    box-shadow:
+        inset 0 0 40px rgba(0,0,0,.8),
+        0 0 40px rgba(30,64,175,.25);
 
+}
 
-        /* =====================================================
-           PASS AREA
-        ===================================================== */
+.center-label {
 
-        .pass-area {
-            margin-top: 10px;
-        }
+    color: #64748b;
 
+    font-size: 12px;
 
-        /* =====================================================
-           END SCREEN
-        ===================================================== */
+    letter-spacing: 3px;
 
-        .end-screen {
-            display: none;
+}
 
-            min-height: 70vh;
+.current-letter {
 
-            flex-direction: column;
+    margin-top: 5px;
 
-            justify-content: center;
+    font-size: 76px;
 
-            align-items: center;
+    line-height: 1;
 
-            text-align: center;
+    font-weight: 900;
 
-            padding: 30px;
-        }
+    color: #60a5fa;
 
-        .end-screen h2 {
-            font-size: 36px;
+    text-shadow:
+        0 0 15px rgba(96,165,250,.8);
 
-            margin-bottom: 10px;
-        }
+}
 
-        .final-score {
-            font-size: 76px;
 
-            line-height: 1;
+/* =========================================================
+   QUESTION PANEL
+========================================================= */
 
-            font-weight: 800;
+.question-panel {
 
-            color: #4ade80;
+    max-width: 900px;
 
-            margin: 25px 0;
-        }
+    margin: auto;
 
-        .final-message {
-            font-size: 23px;
+    padding: 25px;
 
-            color: #cbd5e1;
+    border-radius: 20px;
 
-            margin-bottom: 30px;
-        }
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,41,59,.96),
+            rgba(15,23,42,.96)
+        );
 
+    border: 1px solid #475569;
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.35);
 
-        @media (max-width: 700px) {
+    text-align: center;
 
-            body {
-                padding: 8px;
-            }
+}
 
-            .app {
-                padding: 15px;
+.question-label {
 
-                border-radius: 18px;
-            }
+    color: #94a3b8;
 
-            .scoreboard {
-                gap: 25px;
+    font-size: 14px;
 
-                font-size: 17px;
-            }
+    text-transform: uppercase;
 
-            .rosco-container {
-                width: 94vw;
-            }
+    letter-spacing: 2px;
 
-            .letter {
-                width: 43px;
-                height: 43px;
+}
 
-                font-size: 16px;
-            }
+.question {
 
-            .rosco-center {
-                width: 145px;
-                height: 145px;
-            }
+    min-height: 75px;
 
-            .current-letter {
-                font-size: 50px;
-            }
+    display: flex;
 
-            .center-label {
-                font-size: 10px;
-            }
+    justify-content: center;
 
-            .question {
-                font-size: 19px;
-            }
+    align-items: center;
 
-            .answer-area {
-                flex-direction: column;
-            }
+    margin-top: 8px;
 
-            .answer-input {
-                width: 100%;
+    font-size: 24px;
 
-                max-width: none;
-            }
+    line-height: 1.45;
 
-            .check-button {
-                width: 100%;
-            }
+}
 
-        }
 
+/* =========================================================
+   ANSWER
+========================================================= */
 
-        /* =====================================================
-           VERY SMALL SCREENS
-        ===================================================== */
+.answer-area {
 
-        @media (max-width: 420px) {
+    display: flex;
 
-            .letter {
-                width: 38px;
-                height: 38px;
+    justify-content: center;
 
-                font-size: 14px;
-            }
+    gap: 10px;
 
-            .rosco-center {
-                width: 125px;
-                height: 125px;
-            }
+    margin-top: 20px;
 
-            .current-letter {
-                font-size: 43px;
-            }
+}
 
-        }
+.answer-input {
 
-    </style>
+    flex: 1;
+
+    max-width: 600px;
+
+    min-width: 0;
+
+    padding: 15px 18px;
+
+    border-radius: 11px;
+
+    border: 2px solid #475569;
+
+    background: #020617;
+
+    color: white;
+
+    font-size: 19px;
+
+    text-align: center;
+
+    outline: none;
+
+}
+
+.answer-input:focus {
+
+    border-color: #60a5fa;
+
+    box-shadow:
+        0 0 0 3px rgba(59,130,246,.15);
+
+}
+
+.answer-input::placeholder {
+
+    color: #64748b;
+
+}
+
+.check-button {
+
+    padding: 14px 22px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+.check-button:hover {
+
+    filter: brightness(1.15);
+
+}
+
+
+/* =========================================================
+   PASS
+========================================================= */
+
+.pass-area {
+
+    margin-top: 12px;
+
+}
+
+.pass-button {
+
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #a16207;
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+.pass-button:hover {
+
+    filter: brightness(1.15);
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.feedback {
+
+    min-height: 38px;
+
+    margin-top: 13px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+}
+
+.feedback.correct {
+
+    color: #4ade80;
+
+}
+
+.feedback.wrong {
+
+    color: #f87171;
+
+}
+
+.feedback.pass {
+
+    color: #facc15;
+
+}
+
+
+/* =========================================================
+   END
+========================================================= */
+
+.end-screen {
+
+    display: none;
+
+    min-height: 80vh;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+.end-screen h2 {
+
+    font-size: 42px;
+
+    margin-bottom: 5px;
+
+}
+
+.final-score {
+
+    margin: 25px 0;
+
+    font-size: 82px;
+
+    font-weight: 900;
+
+    color: #4ade80;
+
+    text-shadow:
+        0 0 25px rgba(74,222,128,.4);
+
+}
+
+.final-message {
+
+    max-width: 600px;
+
+    color: #cbd5e1;
+
+    font-size: 21px;
+
+    margin-bottom: 30px;
+
+}
+
+.restart-button {
+
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .app {
+
+        padding:
+            15px 10px 25px;
+
+    }
+
+    .scoreboard {
+
+        gap: 30px;
+
+    }
+
+    .letter {
+
+        width: 43px;
+
+        height: 43px;
+
+        font-size: 16px;
+
+    }
+
+    .rosco-center {
+
+        width: 150px;
+
+        height: 150px;
+
+    }
+
+    .current-letter {
+
+        font-size: 52px;
+
+    }
+
+    .question {
+
+        font-size: 19px;
+
+    }
+
+    .answer-area {
+
+        flex-direction: column;
+
+    }
+
+    .answer-input {
+
+        width: 100%;
+
+        max-width: none;
+
+    }
+
+    .check-button {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .letter {
+
+        width: 37px;
+
+        height: 37px;
+
+        font-size: 14px;
+
+    }
+
+    .rosco-center {
+
+        width: 125px;
+
+        height: 125px;
+
+    }
+
+    .current-letter {
+
+        font-size: 44px;
+
+    }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
-
 <div class="app">
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <header class="header">
+<header class="header">
 
-        <h1>
-            English Rosco
-        </h1>
+    <h1>
+        English Rosco
+    </h1>
 
-        <div class="subtitle">
-            B1+ / B2 Vocabulary Challenge
+    <div class="subtitle">
+        B1+ / B2 Vocabulary Challenge
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     START
+===================================================== -->
+
+<section
+    id="startScreen"
+    class="start-screen"
+>
+
+    <h2>
+        Are you ready?
+    </h2>
+
+    <p class="start-description">
+
+        A new random Rosco will be generated
+        every time you start a game.
+
+        Find the word that matches each definition.
+        Type your answer and press
+        <strong>ENTER</strong>.
+
+        Some answers are phrasal verbs.
+
+    </p>
+
+
+    <div class="info-container">
+
+        <div class="info-chip">
+            26 Letters
         </div>
 
-    </header>
+        <div class="info-chip">
+            260 Questions
+        </div>
+
+        <div class="info-chip">
+            B1+ / B2
+        </div>
+
+        <div class="info-chip">
+            Phrasal Verbs
+        </div>
+
+        <div class="info-chip">
+            Random Games
+        </div>
+
+        <div class="info-chip">
+            No Timer
+        </div>
+
+    </div>
 
 
-    <!-- =====================================================
-         START SCREEN
-    ====================================================== -->
-
-    <section
-        id="startScreen"
-        class="start-screen"
+    <button
+        id="startButton"
+        class="start-button"
     >
+        START RANDOM ROSCO
+    </button>
 
-        <h2>
-            Are you ready?
-        </h2>
-
-
-        <p class="start-description">
-
-            Find the word that matches each definition.
-            Type your answer and press
-            <strong>ENTER</strong>
-            or
-            <strong>CHECK ANSWER</strong>.
-
-            Some answers are phrasal verbs.
-
-            You can use
-            <strong>PASS</strong>
-            if you want to come back to a letter later.
-
-        </p>
+</section>
 
 
-        <div class="start-info">
+<!-- =====================================================
+     GAME
+===================================================== -->
 
-            <div class="info-chip">
-                26 Letters
-            </div>
+<main
+    id="gameScreen"
+    class="game-screen"
+>
 
-            <div class="info-chip">
-                B1+ / B2
-            </div>
 
-            <div class="info-chip">
-                Phrasal Verbs
-            </div>
+<div class="scoreboard">
 
-            <div class="info-chip">
-                No Timer
-            </div>
+    <div class="score-box">
 
+        <div class="score-label">
+            Score
         </div>
+
+        <div
+            id="score"
+            class="score-number green"
+        >
+            0
+        </div>
+
+    </div>
+
+
+    <div class="score-box">
+
+        <div class="score-label">
+            Remaining
+        </div>
+
+        <div
+            id="remaining"
+            class="score-number yellow"
+        >
+            26
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ROSCO
+===================================================== -->
+
+<div class="rosco-container">
+
+    <div
+        id="rosco"
+        class="rosco"
+    >
+    </div>
+
+
+    <div class="rosco-center">
+
+        <div class="center-label">
+            CURRENT LETTER
+        </div>
+
+        <div
+            id="currentLetter"
+            class="current-letter"
+        >
+            A
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     QUESTION
+===================================================== -->
+
+<section class="question-panel">
+
+    <div class="question-label">
+        Your definition
+    </div>
+
+
+    <div
+        id="question"
+        class="question"
+    >
+    </div>
+
+
+    <div class="answer-area">
+
+        <input
+            id="answerInput"
+            class="answer-input"
+            type="text"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="Type your answer..."
+        >
 
 
         <button
-            id="startButton"
-            class="start-button"
-            type="button"
+            id="checkButton"
+            class="check-button"
         >
-            START GAME
+            CHECK ANSWER
         </button>
 
-    </section>
+    </div>
 
 
-    <!-- =====================================================
-         GAME SCREEN
-    ====================================================== -->
-
-    <main
-        id="gameScreen"
-        class="game-screen"
+    <div
+        id="feedback"
+        class="feedback"
     >
+    </div>
 
 
-        <!-- SCORE -->
-
-        <div class="scoreboard">
-
-            <div>
-                Score:
-                <span
-                    id="score"
-                    class="score-value"
-                >
-                    0
-                </span>
-            </div>
-
-
-            <div>
-                Remaining:
-                <span
-                    id="remaining"
-                    class="remaining-value"
-                >
-                    26
-                </span>
-            </div>
-
-        </div>
-
-
-        <!-- ROSCO -->
-
-        <div class="rosco-container">
-
-            <div
-                id="rosco"
-                class="rosco"
-            >
-            </div>
-
-
-            <div class="rosco-center">
-
-                <div class="center-label">
-                    CURRENT LETTER
-                </div>
-
-                <div
-                    id="currentLetter"
-                    class="current-letter"
-                >
-                    A
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- QUESTION -->
-
-        <section class="question-panel">
-
-            <div class="question-label">
-                The answer begins with this letter:
-            </div>
-
-
-            <div
-                id="question"
-                class="question"
-            >
-                Question
-            </div>
-
-
-            <!-- ANSWER -->
-
-            <div class="answer-area">
-
-                <input
-                    id="answerInput"
-                    class="answer-input"
-                    type="text"
-                    autocomplete="off"
-                    autocorrect="off"
-                    autocapitalize="off"
-                    spellcheck="false"
-                    placeholder="Type your answer..."
-                    aria-label="Type your answer"
-                >
-
-
-                <button
-                    id="checkButton"
-                    class="check-button"
-                    type="button"
-                >
-                    CHECK ANSWER
-                </button>
-
-            </div>
-
-
-            <!-- FEEDBACK -->
-
-            <div
-                id="feedback"
-                class="feedback"
-                aria-live="polite"
-            >
-            </div>
-
-
-            <!-- PASS -->
-
-            <div class="pass-area">
-
-                <button
-                    id="passButton"
-                    class="pass-button"
-                    type="button"
-                >
-                    PASS →
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =====================================================
-         END SCREEN
-    ====================================================== -->
-
-    <section
-        id="endScreen"
-        class="end-screen"
-    >
-
-        <h2>
-            Rosco Complete!
-        </h2>
-
-
-        <div
-            id="finalScore"
-            class="final-score"
-        >
-            0 / 26
-        </div>
-
-
-        <div
-            id="finalMessage"
-            class="final-message"
-        >
-            Great job!
-        </div>
-
+    <div class="pass-area">
 
         <button
-            id="restartButton"
-            class="restart-button"
-            type="button"
+            id="passButton"
+            class="pass-button"
         >
-            PLAY AGAIN
+            PASS →
         </button>
 
-    </section>
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     END
+===================================================== -->
+
+<section
+    id="endScreen"
+    class="end-screen"
+>
+
+    <h2>
+        Rosco Complete!
+    </h2>
+
+
+    <div
+        id="finalScore"
+        class="final-score"
+    >
+        0 / 26
+    </div>
+
+
+    <div
+        id="finalMessage"
+        class="final-message"
+    >
+    </div>
+
+
+    <button
+        id="restartButton"
+        class="restart-button"
+    >
+        PLAY AGAIN
+    </button>
+
+</section>
 
 
 </div>
@@ -967,271 +1199,1438 @@
 <script>
 
 /* =========================================================
-   QUESTIONS
-   B1+ / B2
+   QUESTION BANK
+
+   10 questions per letter = 260 total.
+
+   Every new game randomly selects one question
+   for each letter.
 ========================================================= */
 
-const questions = [
+const questionBank = {
+
+A: [
 
     {
-        letter: "A",
-        answers: [
-            "ANNOYED"
-        ],
-        question:
-            "If you are slightly angry because something is bothering you, you feel ______."
+        answer: "ACHIEVE",
+        question: "To successfully reach a goal after making an effort."
     },
 
     {
-        letter: "B",
-        answers: [
-            "BREAK DOWN"
-        ],
-        question:
-            "What phrasal verb means to stop working, especially when talking about a machine or vehicle?"
+        answer: "ANNOYED",
+        question: "Slightly angry because something is bothering you."
     },
 
     {
-        letter: "C",
-        answers: [
-            "CHALLENGE"
-        ],
-        question:
-            "Something difficult that tests your ability or skill is called a ______."
+        answer: "AWARE",
+        question: "Knowing or understanding that something exists or is happening."
     },
 
     {
-        letter: "D",
-        answers: [
-            "DEAL WITH"
-        ],
-        question:
-            "Which phrasal verb means to take action to solve or manage a problem?"
+        answer: "APPROACH",
+        question: "A way of dealing with a problem or situation."
     },
 
     {
-        letter: "E",
-        answers: [
-            "EXHAUSTED"
-        ],
-        question:
-            "If you are extremely tired and have almost no energy left, you are ______."
+        answer: "ASSUME",
+        question: "To believe something is true without having complete proof."
     },
 
     {
-        letter: "F",
-        answers: [
-            "FIGURE OUT"
-        ],
-        question:
-            "Which phrasal verb means to understand or find the answer to something?"
+        answer: "ADMIT",
+        question: "To agree that something is true, especially something uncomfortable."
     },
 
     {
-        letter: "G",
-        answers: [
-            "GENERALLY"
-        ],
-        question:
-            "This adverb means 'in most cases' or 'usually'."
+        answer: "AFFORD",
+        question: "To have enough money to pay for something."
     },
 
     {
-        letter: "H",
-        answers: [
-            "HESITATE"
-        ],
-        question:
-            "What verb means to pause before doing or saying something because you are uncertain?"
+        answer: "ATTEMPT",
+        question: "An effort to do or achieve something."
     },
 
     {
-        letter: "I",
-        answers: [
-            "IMPRESSIVE"
-        ],
-        question:
-            "Something that causes admiration because it is very good or remarkable is ______."
+        answer: "ACCURATE",
+        question: "Correct and free from mistakes."
     },
 
     {
-        letter: "J",
-        answers: [
-            "JEALOUS"
-        ],
-        question:
-            "If you are unhappy because someone has something that you would like to have, you are ______."
-    },
-
-    {
-        letter: "K",
-        answers: [
-            "KEEP UP"
-        ],
-        question:
-            "Which phrasal verb means to continue at the same speed or level as someone or something?"
-    },
-
-    {
-        letter: "L",
-        answers: [
-            "LIKELY"
-        ],
-        question:
-            "If something will probably happen, it is ______ to happen."
-    },
-
-    {
-        letter: "M",
-        answers: [
-            "MISUNDERSTAND"
-        ],
-        question:
-            "What verb means to understand something incorrectly?"
-    },
-
-    {
-        letter: "N",
-        answers: [
-            "NEGOTIATE"
-        ],
-        question:
-            "What verb means to discuss something in order to reach an agreement?"
-    },
-
-    {
-        letter: "O",
-        answers: [
-            "OVERCOME"
-        ],
-        question:
-            "What verb means to successfully deal with or defeat a difficult problem?"
-    },
-
-    {
-        letter: "P",
-        answers: [
-            "PUT OFF"
-        ],
-        question:
-            "Which phrasal verb means to postpone something until a later time?"
-    },
-
-    {
-        letter: "Q",
-        answers: [
-            "QUALIFIED"
-        ],
-        question:
-            "If someone has the necessary skills, knowledge or training for a job, they are ______."
-    },
-
-    {
-        letter: "R",
-        answers: [
-            "RELIABLE"
-        ],
-        question:
-            "Someone or something that can be trusted to do what is expected is ______."
-    },
-
-    {
-        letter: "S",
-        answers: [
-            "SETTLE DOWN"
-        ],
-        question:
-            "Which phrasal verb means to become calmer or to start living a quieter, more stable life?"
-    },
-
-    {
-        letter: "T",
-        answers: [
-            "THOROUGH"
-        ],
-        question:
-            "If you are very careful and complete, paying attention to every detail, you are ______."
-    },
-
-    {
-        letter: "U",
-        answers: [
-            "UNEXPECTED"
-        ],
-        question:
-            "Something that happens without being predicted or anticipated is ______."
-    },
-
-    {
-        letter: "V",
-        answers: [
-            "VERSATILE"
-        ],
-        question:
-            "Someone or something that can be used for many different purposes is ______."
-    },
-
-    {
-        letter: "W",
-        answers: [
-            "WITHDRAW"
-        ],
-        question:
-            "What verb means to remove yourself or something from a situation, place or activity?"
-    },
-
-    {
-        letter: "X",
-        answers: [
-            "XENOPHOBIA"
-        ],
-        question:
-            "What word describes fear or dislike of people from other countries or cultures?"
-    },
-
-    {
-        letter: "Y",
-        answers: [
-            "YIELD"
-        ],
-        question:
-            "What verb can mean to produce a result, such as 'This investment ______ a high return'?"
-    },
-
-    {
-        letter: "Z",
-        answers: [
-            "ZONE OUT"
-        ],
-        question:
-            "Which phrasal verb means to stop paying attention because your mind is somewhere else?"
+        answer: "ADAPT",
+        question: "To change your behaviour or approach to suit a new situation."
     }
 
-];
+],
+
+B: [
+
+    {
+        answer: "BREAK DOWN",
+        question: "A machine or vehicle stops working."
+    },
+
+    {
+        answer: "BACK UP",
+        question: "To make a copy of computer data in case the original is lost."
+    },
+
+    {
+        answer: "BROADCAST",
+        question: "To send a programme or information by television, radio or the internet."
+    },
+
+    {
+        answer: "BARGAIN",
+        question: "Something bought for a much lower price than expected."
+    },
+
+    {
+        answer: "BOTHER",
+        question: "To annoy someone or make an effort to do something."
+    },
+
+    {
+        answer: "BEHAVE",
+        question: "To act in a particular way, especially in a social situation."
+    },
+
+    {
+        answer: "BENEFIT",
+        question: "An advantage or something useful that you gain."
+    },
+
+    {
+        answer: "BELONG",
+        question: "To be owned by someone or to feel that you are part of a group."
+    },
+
+    {
+        answer: "BOOST",
+        question: "To increase or improve something."
+    },
+
+    {
+        answer: "BREAKTHROUGH",
+        question: "An important discovery or development that solves a problem."
+    }
+
+],
+
+C: [
+
+    {
+        answer: "CHALLENGE",
+        question: "Something difficult that tests your ability or skill."
+    },
+
+    {
+        answer: "CARRY ON",
+        question: "Which phrasal verb means to continue doing something?"
+    },
+
+    {
+        answer: "CONVINCE",
+        question: "To make someone believe that something is true."
+    },
+
+    {
+        answer: "CONSIDER",
+        question: "To think carefully about something before making a decision."
+    },
+
+    {
+        answer: "COMMITMENT",
+        question: "A promise or willingness to give your time or energy to something."
+    },
+
+    {
+        answer: "COMPLEX",
+        question: "Complicated and involving many different parts."
+    },
+
+    {
+        answer: "CONSEQUENCE",
+        question: "A result that happens because of a particular action."
+    },
+
+    {
+        answer: "CONTRIBUTE",
+        question: "To give something, such as money, time or ideas, to a cause or project."
+    },
+
+    {
+        answer: "COPE",
+        question: "To deal successfully with a difficult situation."
+    },
+
+    {
+        answer: "CURIOUS",
+        question: "Wanting to know or learn something."
+    }
+
+],
+
+D: [
+
+    {
+        answer: "DEAL WITH",
+        question: "Which phrasal verb means to manage or solve a problem?"
+    },
+
+    {
+        answer: "DEMAND",
+        question: "A strong request for something."
+    },
+
+    {
+        answer: "DECREASE",
+        question: "To become smaller in amount, size or importance."
+    },
+
+    {
+        answer: "DETERMINED",
+        question: "Having made a firm decision and being unwilling to give up."
+    },
+
+    {
+        answer: "DISAPPOINTED",
+        question: "Unhappy because something was not as good as you expected."
+    },
+
+    {
+        answer: "DISTRACT",
+        question: "To prevent someone from concentrating on something."
+    },
+
+    {
+        answer: "DRASTIC",
+        question: "Very serious or extreme and likely to have a strong effect."
+    },
+
+    {
+        answer: "DRAWBACK",
+        question: "A disadvantage or negative aspect of something."
+    },
+
+    {
+        answer: "DUE",
+        question: "Expected or scheduled to happen at a particular time."
+    },
+
+    {
+        answer: "DEVELOP",
+        question: "To grow, change or become more advanced."
+    }
+
+],
+
+E: [
+
+    {
+        answer: "EXHAUSTED",
+        question: "Extremely tired and without much energy."
+    },
+
+    {
+        answer: "ENCOUNTER",
+        question: "To unexpectedly experience or meet someone or something."
+    },
+
+    {
+        answer: "ENCOURAGE",
+        question: "To give someone confidence or support."
+    },
+
+    {
+        answer: "ESSENTIAL",
+        question: "Absolutely necessary or extremely important."
+    },
+
+    {
+        answer: "ESTIMATE",
+        question: "A calculation or judgement about the likely size, cost or value of something."
+    },
+
+    {
+        answer: "EFFICIENT",
+        question: "Working well without wasting time, energy or resources."
+    },
+
+    {
+        answer: "EMERGE",
+        question: "To appear or become known."
+    },
+
+    {
+        answer: "ENABLE",
+        question: "To make it possible for someone to do something."
+    },
+
+    {
+        answer: "EVIDENCE",
+        question: "Facts or information that show whether something is true."
+    },
+
+    {
+        answer: "EXPECTATION",
+        question: "A belief about what is likely to happen."
+    }
+
+],
+
+F: [
+
+    {
+        answer: "FIGURE OUT",
+        question: "Which phrasal verb means to understand or find the answer to something?"
+    },
+
+    {
+        answer: "FLEXIBLE",
+        question: "Able to change or adapt easily to different situations."
+    },
+
+    {
+        answer: "FASCINATING",
+        question: "Extremely interesting and attractive."
+    },
+
+    {
+        answer: "FAILURE",
+        question: "The lack of success in achieving something."
+    },
+
+    {
+        answer: "FREQUENTLY",
+        question: "Often or regularly."
+    },
+
+    {
+        answer: "FUNDAMENTAL",
+        question: "Basic and extremely important."
+    },
+
+    {
+        answer: "FULFIL",
+        question: "To achieve something that you hoped or expected to achieve."
+    },
+
+    {
+        answer: "FRUSTRATED",
+        question: "Annoyed because you cannot do or achieve something."
+    },
+
+    {
+        answer: "FORECAST",
+        question: "A prediction about what is likely to happen."
+    },
+
+    {
+        answer: "FURTHER",
+        question: "Additional or more advanced."
+    }
+
+],
+
+G: [
+
+    {
+        answer: "GENERALLY",
+        question: "In most cases or usually."
+    },
+
+    {
+        answer: "GET ALONG",
+        question: "Which phrasal verb means to have a good relationship with someone?"
+    },
+
+    {
+        answer: "GIVE UP",
+        question: "Which phrasal verb means to stop trying?"
+    },
+
+    {
+        answer: "GRATEFUL",
+        question: "Feeling thankful for something."
+    },
+
+    {
+        answer: "GENERATE",
+        question: "To produce or create something."
+    },
+
+    {
+        answer: "Genuine",
+        question: "Real and sincere, rather than false or artificial."
+    },
+
+    {
+        answer: "GOAL",
+        question: "Something that you hope to achieve."
+    },
+
+    {
+        answer: "GRADUALLY",
+        question: "Slowly, over a period of time."
+    },
+
+    {
+        answer: "GUIDELINE",
+        question: "Advice about how something should be done."
+    },
+
+    {
+        answer: "GAP",
+        question: "A difference or empty space between two things."
+    }
+
+],
+
+H: [
+
+    {
+        answer: "HESITATE",
+        question: "To pause before doing or saying something because you are uncertain."
+    },
+
+    {
+        answer: "HANDLE",
+        question: "To deal with a difficult situation successfully."
+    },
+
+    {
+        answer: "HARMFUL",
+        question: "Causing damage or negative effects."
+    },
+
+    {
+        answer: "HIGHLIGHT",
+        question: "The most important or interesting part of something."
+    },
+
+    {
+        answer: "HABIT",
+        question: "Something you regularly do, often without thinking."
+    },
+
+    {
+        answer: "HOSTILE",
+        question: "Unfriendly or aggressive."
+    },
+
+    {
+        answer: "HOUSEHOLD",
+        question: "All the people who live together in one home."
+    },
+
+    {
+        answer: "HUMBLE",
+        question: "Not believing that you are better or more important than others."
+    },
+
+    {
+        answer: "HURDLE",
+        question: "A problem or difficulty that must be overcome."
+    },
+
+    {
+        answer: "HYPOTHESIS",
+        question: "An idea or explanation that can be tested."
+    }
+
+],
+
+I: [
+
+    {
+        answer: "IMPRESSIVE",
+        question: "Causing admiration because something is very good or remarkable."
+    },
+
+    {
+        answer: "IMPROVE",
+        question: "To become better or make something better."
+    },
+
+    {
+        answer: "INFLUENCE",
+        question: "The power to affect someone's behaviour or decisions."
+    },
+
+    {
+        answer: "INCREASE",
+        question: "To become larger in amount or number."
+    },
+
+    {
+        answer: "INDEPENDENT",
+        question: "Able to act or make decisions without relying on others."
+    },
+
+    {
+        answer: "INEVITABLE",
+        question: "Certain to happen and impossible to avoid."
+    },
+
+    {
+        answer: "INSIGHT",
+        question: "A clear and deep understanding of a situation."
+    },
+
+    {
+        answer: "INTEND",
+        question: "To plan or mean to do something."
+    },
+
+    {
+        answer: "INVOLVE",
+        question: "To include someone or something in an activity or situation."
+    },
+
+    {
+        answer: "ISSUE",
+        question: "An important problem or topic that needs to be discussed."
+    }
+
+],
+
+J: [
+
+    {
+        answer: "JEALOUS",
+        question: "Unhappy because someone has something that you would like to have."
+    },
+
+    {
+        answer: "JUSTIFY",
+        question: "To give a good reason for something you have done."
+    },
+
+    {
+        answer: "JUDGEMENT",
+        question: "An opinion or decision based on careful thought."
+    },
+
+    {
+        answer: "JOINT",
+        question: "Shared or done by two or more people or organisations."
+    },
+
+    {
+        answer: "JOURNEY",
+        question: "The act of travelling from one place to another."
+    },
+
+    {
+        answer: "JUSTICE",
+        question: "Fair treatment according to the law or accepted principles."
+    },
+
+    {
+        answer: "JUSTIFY",
+        question: "To show that an action or decision was reasonable."
+    },
+
+    {
+        answer: "JUMP TO CONCLUSIONS",
+        question: "To form an opinion too quickly without enough evidence."
+    },
+
+    {
+        answer: "JOBLESS",
+        question: "Without a job or employment."
+    },
+
+    {
+        answer: "JUST",
+        question: "Fair and reasonable."
+    }
+
+],
+
+K: [
+
+    {
+        answer: "KEEP UP",
+        question: "Which phrasal verb means to continue at the same speed or level?"
+    },
+
+    {
+        answer: "KEEP IN MIND",
+        question: "Which expression means to remember or consider something?"
+    },
+
+    {
+        answer: "KEY",
+        question: "Extremely important or essential."
+    },
+
+    {
+        answer: "KNOWLEDGE",
+        question: "Information and understanding gained through learning or experience."
+    },
+
+    {
+        answer: "KIND",
+        question: "Caring and considerate towards other people."
+    },
+
+    {
+        answer: "KICK OFF",
+        question: "Which phrasal verb can mean to start an event or activity?"
+    },
+
+    {
+        answer: "KNOCK OUT",
+        question: "Which phrasal verb means to defeat someone in a competition?"
+    },
+
+    {
+        answer: "KEEP TRACK",
+        question: "To continue to know what is happening or where something is."
+    },
+
+    {
+        answer: "KNOWN",
+        question: "Recognised or familiar to people."
+    },
+
+    {
+        answer: "Keen",
+        question: "Very interested or enthusiastic about something."
+    }
+
+],
+
+L: [
+
+    {
+        answer: "LIKELY",
+        question: "If something will probably happen, it is ______ to happen."
+    },
+
+    {
+        answer: "LOOK AFTER",
+        question: "Which phrasal verb means to take care of someone or something?"
+    },
+
+    {
+        answer: "LOOK FORWARD",
+        question: "Which expression means to feel excited about something that will happen?"
+    },
+
+    {
+        answer: "LIMIT",
+        question: "The greatest amount or level that is allowed."
+    },
+
+    {
+        answer: "LACK",
+        question: "To not have enough of something."
+    },
+
+    {
+        answer: "LEGACY",
+        question: "Something valuable left behind by someone from the past."
+    },
+
+    {
+        answer: "LOGICAL",
+        question: "Based on clear reasoning and sensible ideas."
+    },
+
+    {
+        answer: "LOYAL",
+        question: "Showing strong support or commitment to someone or something."
+    },
+
+    {
+        answer: "LIVELY",
+        question: "Full of energy and enthusiasm."
+    },
+
+    {
+        answer: "LONG-TERM",
+        question: "Continuing for a long period of time."
+    }
+
+],
+
+M: [
+
+    {
+        answer: "MISUNDERSTAND",
+        question: "To understand something incorrectly."
+    },
+
+    {
+        answer: "MAKE UP",
+        question: "Which phrasal verb can mean to invent a story or excuse?"
+    },
+
+    {
+        answer: "MANAGE",
+        question: "To succeed in doing something difficult."
+    },
+
+    {
+        answer: "MOTIVATE",
+        question: "To make someone want to do something."
+    },
+
+    {
+        answer: "MEANWHILE",
+        question: "At the same time as something else is happening."
+    },
+
+    {
+        answer: "MAINTAIN",
+        question: "To keep something at the same level or condition."
+    },
+
+    {
+        answer: "MEASURE",
+        question: "To find the size, amount or degree of something."
+    },
+
+    {
+        answer: "MODERATE",
+        question: "Not extreme or excessive."
+    },
+
+    {
+        answer: "MUTUAL",
+        question: "Shared by two or more people."
+    },
+
+    {
+        answer: "MISLEADING",
+        question: "Giving the wrong idea or impression."
+    }
+
+],
+
+N: [
+
+    {
+        answer: "NEGOTIATE",
+        question: "To discuss something in order to reach an agreement."
+    },
+
+    {
+        answer: "NOTICE",
+        question: "To become aware of something."
+    },
+
+    {
+        answer: "NECESSARY",
+        question: "Needed in order to achieve a particular result."
+    },
+
+    {
+        answer: "NEVERTHELESS",
+        question: "Despite what has just been said."
+    },
+
+    {
+        answer: "NARROW",
+        question: "Having a small distance from one side to the other."
+    },
+
+    {
+        answer: "NEGLECT",
+        question: "To fail to give enough attention or care to something."
+    },
+
+    {
+        answer: "NOTION",
+        question: "An idea or belief about something."
+    },
+
+    {
+        answer: "NUMEROUS",
+        question: "Existing in large numbers."
+    },
+
+    {
+        answer: "NETWORK",
+        question: "A system of people or organisations connected for a particular purpose."
+    },
+
+    {
+        answer: "NURTURE",
+        question: "To help someone or something develop and grow."
+    }
+
+],
+
+O: [
+
+    {
+        answer: "OVERCOME",
+        question: "To successfully deal with or defeat a difficult problem."
+    },
+
+    {
+        answer: "OUTCOME",
+        question: "The final result of an action or situation."
+    },
+
+    {
+        answer: "OBVIOUS",
+        question: "Easy to see, understand or recognise."
+    },
+
+    {
+        answer: "OCCUR",
+        question: "To happen."
+    },
+
+    {
+        answer: "OBTAIN",
+        question: "To get or acquire something."
+    },
+
+    {
+        answer: "OPTION",
+        question: "One of several choices that can be made."
+    },
+
+    {
+        answer: "OBJECTIVE",
+        question: "A goal or result that you are trying to achieve."
+    },
+
+    {
+        answer: "OCCASIONALLY",
+        question: "Sometimes, but not regularly."
+    },
+
+    {
+        answer: "OVERWHELMED",
+        question: "Feeling unable to deal with a situation because there is too much to handle."
+    },
+
+    {
+        answer: "ONGOING",
+        question: "Continuing to happen."
+    }
+
+],
+
+P: [
+
+    {
+        answer: "PUT OFF",
+        question: "Which phrasal verb means to postpone something?"
+    },
+
+    {
+        answer: "PERSIST",
+        question: "To continue doing something despite difficulty or opposition."
+    },
+
+    {
+        answer: "PREVENT",
+        question: "To stop something from happening."
+    },
+
+    {
+        answer: "PERCEIVE",
+        question: "To notice or understand something in a particular way."
+    },
+
+    {
+        answer: "PRIORITY",
+        question: "Something that is more important than other things."
+    },
+
+    {
+        answer: "PRECISE",
+        question: "Exact and accurate."
+    },
+
+    {
+        answer: "PERSUADE",
+        question: "To convince someone to do or believe something."
+    },
+
+    {
+        answer: "PROGRESS",
+        question: "Movement towards a better or more advanced state."
+    },
+
+    {
+        answer: "PROVIDE",
+        question: "To give someone something that they need."
+    },
+
+    {
+        answer: "PROSPECT",
+        question: "The possibility or likelihood of something happening."
+    }
+
+],
+
+Q: [
+
+    {
+        answer: "QUALIFIED",
+        question: "Having the necessary skills, knowledge or training for a job."
+    },
+
+    {
+        answer: "QUESTIONNAIRE",
+        question: "A written set of questions used to collect information."
+    },
+
+    {
+        answer: "QUICK-WITTED",
+        question: "Able to think and respond quickly and intelligently."
+    },
+
+    {
+        answer: "QUIT",
+        question: "To stop doing something or leave a job."
+    },
+
+    {
+        answer: "QUANTITY",
+        question: "An amount or number of something."
+    },
+
+    {
+        answer: "QUALIFY",
+        question: "To meet the necessary requirements for something."
+    },
+
+    {
+        answer: "QUOTE",
+        question: "To repeat someone's exact words."
+    },
+
+    {
+        answer: "QUERY",
+        question: "A question, especially one requiring an answer or explanation."
+    },
+
+    {
+        answer: "QUEST",
+        question: "A long search for something important."
+    },
+
+    {
+        answer: "QUITE",
+        question: "To a certain degree or fairly."
+    }
+
+],
+
+R: [
+
+    {
+        answer: "RELIABLE",
+        question: "Someone or something that can be trusted to do what is expected."
+    },
+
+    {
+        answer: "RUN INTO",
+        question: "Which phrasal verb can mean to unexpectedly meet someone?"
+    },
+
+    {
+        answer: "REQUIRE",
+        question: "To need something."
+    },
+
+    {
+        answer: "REASONABLE",
+        question: "Fair, sensible or acceptable."
+    },
+
+    {
+        answer: "RELEVANT",
+        question: "Connected with the subject being discussed."
+    },
+
+    {
+        answer: "RELUCTANT",
+        question: "Not willing or eager to do something."
+    },
+
+    {
+        answer: "RESOLVE",
+        question: "To solve a problem."
+    },
+
+    {
+        answer: "REVEAL",
+        question: "To make something previously unknown known."
+    },
+
+    {
+        answer: "REPUTATION",
+        question: "The opinion people generally have about someone or something."
+    },
+
+    {
+        answer: "RESPONSIBLE",
+        question: "Having a duty to deal with something or someone."
+    }
+
+],
+
+S: [
+
+    {
+        answer: "SETTLE DOWN",
+        question: "Which phrasal verb means to become calmer or live a more stable life?"
+    },
+
+    {
+        answer: "SIGNIFICANT",
+        question: "Important or large enough to have an effect."
+    },
+
+    {
+        answer: "SUGGEST",
+        question: "To mention an idea or possibility for someone to consider."
+    },
+
+    {
+        answer: "SUSTAINABLE",
+        question: "Able to continue without causing serious environmental or social damage."
+    },
+
+    {
+        answer: "STRUGGLE",
+        question: "To have difficulty doing or achieving something."
+    },
+
+    {
+        answer: "SINCERE",
+        question: "Honest and genuine in what you say or feel."
+    },
+
+    {
+        answer: "SHORTAGE",
+        question: "A situation in which there is not enough of something."
+    },
+
+    {
+        answer: "SETBACK",
+        question: "A problem that delays or prevents progress."
+    },
+
+    {
+        answer: "SPECIFIC",
+        question: "Clearly defined or identified."
+    },
+
+    {
+        answer: "SOLVE",
+        question: "To find an answer to a problem."
+    }
+
+],
+
+T: [
+
+    {
+        answer: "THOROUGH",
+        question: "Very careful and complete, paying attention to every detail."
+    },
+
+    {
+        answer: "TAKE OVER",
+        question: "Which phrasal verb means to take control of something?"
+    },
+
+    {
+        answer: "TEND",
+        question: "To usually do or be something."
+    },
+
+    {
+        answer: "THREAT",
+        question: "Something that could cause harm or danger."
+    },
+
+    {
+        answer: "TOLERATE",
+        question: "To accept something unpleasant without complaining."
+    },
+
+    {
+        answer: "TREMENDOUS",
+        question: "Very large, powerful or impressive."
+    },
+
+    {
+        answer: "TYPICAL",
+        question: "Having the usual characteristics of a particular person or thing."
+    },
+
+    {
+        answer: "TRANSFORM",
+        question: "To change something completely."
+    },
+
+    {
+        answer: "TRIGGER",
+        question: "To cause something to start or happen."
+    },
+
+    {
+        answer: "TRUSTWORTHY",
+        question: "Deserving of trust."
+    }
+
+],
+
+U: [
+
+    {
+        answer: "UNEXPECTED",
+        question: "Something that happens without being predicted."
+    },
+
+    {
+        answer: "UNDERMINE",
+        question: "To gradually make someone or something less effective or confident."
+    },
+
+    {
+        answer: "UNIQUE",
+        question: "Being the only one of its kind."
+    },
+
+    {
+        answer: "URGENT",
+        question: "Needing immediate attention."
+    },
+
+    {
+        answer: "ULTIMATELY",
+        question: "Finally, after a series of events."
+    },
+
+    {
+        answer: "UNCERTAIN",
+        question: "Not known, decided or completely sure."
+    },
+
+    {
+        answer: "UNWILLING",
+        question: "Not wanting to do something."
+    },
+
+    {
+        answer: "UPDATE",
+        question: "To give someone the latest information."
+    },
+
+    {
+        answer: "UTILISE",
+        question: "To use something effectively for a particular purpose."
+    },
+
+    {
+        answer: "UNDERSTAND",
+        question: "To know the meaning of something."
+    }
+
+],
+
+V: [
+
+    {
+        answer: "VERSATILE",
+        question: "Able to be used for many different purposes."
+    },
+
+    {
+        answer: "VALID",
+        question: "Based on reasonable evidence or logic."
+    },
+
+    {
+        answer: "VARY",
+        question: "To change or be different depending on the situation."
+    },
+
+    {
+        answer: "VITAL",
+        question: "Extremely important or necessary."
+    },
+
+    {
+        answer: "VISIBLE",
+        question: "Able to be seen."
+    },
+
+    {
+        answer: "VOLUNTARY",
+        question: "Done willingly and without being forced."
+    },
+
+    {
+        answer: "VERIFY",
+        question: "To check that something is true or accurate."
+    },
+
+    {
+        answer: "VIABLE",
+        question: "Able to work successfully or realistically."
+    },
+
+    {
+        answer: "VULNERABLE",
+        question: "Easily harmed, attacked or affected."
+    },
+
+    {
+        answer: "VIRTUALLY",
+        question: "Almost or very nearly."
+    }
+
+],
+
+W: [
+
+    {
+        answer: "WITHDRAW",
+        question: "To remove yourself or something from a situation."
+    },
+
+    {
+        answer: "WORK OUT",
+        question: "Which phrasal verb means to solve a problem or understand something?"
+    },
+
+    {
+        answer: "WORTHWHILE",
+        question: "Worth the time, money or effort spent."
+    },
+
+    {
+        answer: "WIDESPREAD",
+        question: "Existing or happening in many places."
+    },
+
+    {
+        answer: "WILLING",
+        question: "Happy or prepared to do something."
+    },
+
+    {
+        answer: "WEALTH",
+        question: "A large amount of money or valuable possessions."
+    },
+
+    {
+        answer: "WHEREAS",
+        question: "Used to compare two different facts or situations."
+    },
+
+    {
+        answer: "WITNESS",
+        question: "A person who sees an event happen."
+    },
+
+    {
+        answer: "WEAKNESS",
+        question: "A fault or lack of strength."
+    },
+
+    {
+        answer: "WITHSTAND",
+        question: "To successfully resist something difficult or damaging."
+    }
+
+],
+
+X: [
+
+    {
+        answer: "XENOPHOBIA",
+        question: "Fear or dislike of people from other countries or cultures."
+    },
+
+    {
+        answer: "XENOPHOBIC",
+        question: "Showing fear or dislike of people from other countries."
+    },
+
+    {
+        answer: "X-RAY",
+        question: "A medical image used to see inside the body."
+    },
+
+    {
+        answer: "XENON",
+        question: "A chemical element that is a colourless gas."
+    },
+
+    {
+        answer: "XEROX",
+        question: "To make a photocopy of a document."
+    },
+
+    {
+        answer: "XYLOPHONE",
+        question: "A musical instrument made of wooden bars."
+    },
+
+    {
+        answer: "XENIAL",
+        question: "Friendly towards guests or strangers."
+    },
+
+    {
+        answer: "XENOPHILE",
+        question: "A person who is attracted to foreign cultures or people."
+    },
+
+    {
+        answer: "X-FACTOR",
+        question: "A special quality that makes someone or something successful."
+    },
+
+    {
+        answer: "XENIALITY",
+        question: "Friendliness towards guests or strangers."
+    }
+
+],
+
+Y: [
+
+    {
+        answer: "YIELD",
+        question: "To produce a result, such as a financial return."
+    },
+
+    {
+        answer: "YEARLY",
+        question: "Happening once every year."
+    },
+
+    {
+        answer: "YOUNGSTER",
+        question: "A young person."
+    },
+
+    {
+        answer: "YELL",
+        question: "To shout loudly."
+    },
+
+    {
+        answer: "YAWN",
+        question: "To open your mouth widely because you are tired."
+    },
+
+    {
+        answer: "YEAR-ROUND",
+        question: "Happening throughout the entire year."
+    },
+
+    {
+        answer: "YARDSTICK",
+        question: "A standard used for comparing or judging something."
+    },
+
+    {
+        answer: "YEARN",
+        question: "To strongly desire something."
+    },
+
+    {
+        answer: "YES-MAN",
+        question: "A person who always agrees with someone in authority."
+    },
+
+    {
+        answer: "YIELDING",
+        question: "Willing to give way or accept something."
+    }
+
+],
+
+Z: [
+
+    {
+        answer: "ZONE OUT",
+        question: "Which phrasal verb means to stop paying attention because your mind is somewhere else?"
+    },
+
+    {
+        answer: "ZERO IN",
+        question: "Which phrasal verb means to focus closely on something?"
+    },
+
+    {
+        answer: "ZEST",
+        question: "Great enthusiasm and energy."
+    },
+
+    {
+        answer: "ZANY",
+        question: "Funny or unusual in a silly way."
+    },
+
+    {
+        answer: "ZEALOUS",
+        question: "Very enthusiastic and energetic in supporting something."
+    },
+
+    {
+        answer: "ZIGZAG",
+        question: "A line that repeatedly changes direction from one side to another."
+    },
+
+    {
+        answer: "ZIP",
+        question: "To move very quickly."
+    },
+
+    {
+        answer: "ZOOM",
+        question: "To move very quickly."
+    },
+
+    {
+        answer: "ZONING",
+        question: "The division of an area into sections for different uses."
+    },
+
+    {
+        answer: "ZOO",
+        question: "A place where wild animals are kept for people to see."
+    }
+
+]
+
+};
 
 
 /* =========================================================
-   GAME STATE
+   STATE
 ========================================================= */
+
+let questions = [];
+
+let states = [];
 
 let currentIndex = 0;
 
 let score = 0;
 
-/*
-   Possible states:
-
-   pending = not answered yet
-   correct = answered correctly
-   wrong   = answered incorrectly
-   passed  = skipped
-*/
-
-let states = [];
-
 
 /* =========================================================
-   DOM ELEMENTS
+   DOM
 ========================================================= */
 
 const startScreen =
@@ -1284,7 +2683,7 @@ const restartButton =
 
 
 /* =========================================================
-   NORMALIZE TEXT
+   NORMALIZE
 ========================================================= */
 
 function normalizeText(text) {
@@ -1299,18 +2698,59 @@ function normalizeText(text) {
 
 
 /* =========================================================
-   START GAME
+   RANDOM QUESTION FOR EACH LETTER
+========================================================= */
+
+function generateRandomRosco() {
+
+    const letters =
+        Object.keys(questionBank);
+
+    questions = [];
+
+    letters.forEach(letter => {
+
+        const options =
+            questionBank[letter];
+
+        const randomIndex =
+            Math.floor(
+                Math.random() *
+                options.length
+            );
+
+        questions.push({
+
+            letter: letter,
+
+            answer:
+                options[randomIndex].answer,
+
+            question:
+                options[randomIndex].question
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   START
 ========================================================= */
 
 function startGame() {
 
-    currentIndex = 0;
-
-    score = 0;
+    generateRandomRosco();
 
     states =
         Array(questions.length)
         .fill("pending");
+
+    currentIndex = 0;
+
+    score = 0;
 
     startScreen.style.display =
         "none";
@@ -1350,8 +2790,7 @@ function createRosco() {
                 2 -
                 Math.PI / 2;
 
-            const radius =
-                44;
+            const radius = 44;
 
             const x =
                 50 +
@@ -1381,7 +2820,9 @@ function createRosco() {
             element.style.top =
                 y + "%";
 
-            rosco.appendChild(element);
+            rosco.appendChild(
+                element
+            );
 
         }
     );
@@ -1404,8 +2845,7 @@ function showQuestion() {
     questionElement.textContent =
         item.question;
 
-    answerInput.value =
-        "";
+    answerInput.value = "";
 
     answerInput.disabled =
         false;
@@ -1416,17 +2856,12 @@ function showQuestion() {
     passButton.disabled =
         false;
 
-    feedback.textContent =
-        "";
+    feedback.textContent = "";
 
     feedback.className =
         "feedback";
 
     updateRosco();
-
-    /*
-       Give the keyboard focus to the input.
-    */
 
     setTimeout(
         () => answerInput.focus(),
@@ -1437,7 +2872,7 @@ function showQuestion() {
 
 
 /* =========================================================
-   UPDATE ROSCO
+   ROSCO UPDATE
 ========================================================= */
 
 function updateRosco() {
@@ -1504,7 +2939,7 @@ function updateRosco() {
 
 
 /* =========================================================
-   CHECK ANSWER
+   CHECK
 ========================================================= */
 
 function checkAnswer() {
@@ -1513,17 +2948,17 @@ function checkAnswer() {
         states[currentIndex] !==
         "pending"
     ) {
+
         return;
+
     }
+
 
     const typed =
         normalizeText(
             answerInput.value
         );
 
-    /*
-       Do nothing if the user has not typed anything.
-    */
 
     if (!typed) {
 
@@ -1540,23 +2975,16 @@ function checkAnswer() {
     }
 
 
-    const acceptedAnswers =
-        questions[currentIndex]
-            .answers
-            .map(normalizeText);
-
-
-    const isCorrect =
-        acceptedAnswers.includes(
-            typed
+    const correct =
+        normalizeText(
+            questions[currentIndex]
+                .answer
         );
 
 
-    /* =====================================================
-       CORRECT
-    ===================================================== */
-
-    if (isCorrect) {
+    if (
+        typed === correct
+    ) {
 
         states[currentIndex] =
             "correct";
@@ -1571,11 +2999,6 @@ function checkAnswer() {
 
     }
 
-
-    /* =====================================================
-       WRONG
-    ===================================================== */
-
     else {
 
         states[currentIndex] =
@@ -1584,7 +3007,7 @@ function checkAnswer() {
         feedback.textContent =
             "✗ Incorrect — Answer: " +
             questions[currentIndex]
-                .answers[0];
+                .answer;
 
         feedback.className =
             "feedback wrong";
@@ -1606,10 +3029,6 @@ function checkAnswer() {
     updateRosco();
 
 
-    /*
-       Wait so the class can see the result.
-    */
-
     setTimeout(
         goToNextQuestion,
         1300
@@ -1619,7 +3038,7 @@ function checkAnswer() {
 
 
 /* =========================================================
-   PASS QUESTION
+   PASS
 ========================================================= */
 
 function passQuestion() {
@@ -1628,17 +3047,22 @@ function passQuestion() {
         states[currentIndex] !==
         "pending"
     ) {
+
         return;
+
     }
+
 
     states[currentIndex] =
         "passed";
+
 
     feedback.textContent =
         "Passed — we'll come back to this one.";
 
     feedback.className =
         "feedback pass";
+
 
     answerInput.disabled =
         true;
@@ -1649,7 +3073,6 @@ function passQuestion() {
     passButton.disabled =
         true;
 
-    updateScore();
 
     updateRosco();
 
@@ -1663,20 +3086,18 @@ function passQuestion() {
 
 
 /* =========================================================
-   FIND NEXT QUESTION
+   NEXT
 ========================================================= */
 
 function goToNextQuestion() {
 
-    /*
-       First priority:
-       unanswered questions.
-    */
-
     let nextPending =
         findNextState("pending");
 
-    if (nextPending !== -1) {
+
+    if (
+        nextPending !== -1
+    ) {
 
         currentIndex =
             nextPending;
@@ -1688,15 +3109,13 @@ function goToNextQuestion() {
     }
 
 
-    /*
-       If there are no pending questions,
-       return to passed questions.
-    */
-
     let nextPassed =
         findNextState("passed");
 
-    if (nextPassed !== -1) {
+
+    if (
+        nextPassed !== -1
+    ) {
 
         currentIndex =
             nextPassed;
@@ -1708,20 +3127,16 @@ function goToNextQuestion() {
     }
 
 
-    /*
-       Nothing remains.
-    */
-
     finishGame();
 
 }
 
 
 /* =========================================================
-   FIND STATE
+   FIND NEXT STATE
 ========================================================= */
 
-function findNextState(targetState) {
+function findNextState(target) {
 
     for (
         let offset = 1;
@@ -1734,8 +3149,7 @@ function findNextState(targetState) {
             questions.length;
 
         if (
-            states[index] ===
-            targetState
+            states[index] === target
         ) {
 
             return index;
@@ -1750,7 +3164,7 @@ function findNextState(targetState) {
 
 
 /* =========================================================
-   UPDATE SCORE
+   SCORE
 ========================================================= */
 
 function updateScore() {
@@ -1774,7 +3188,7 @@ function updateScore() {
 
 
 /* =========================================================
-   FINISH GAME
+   END
 ========================================================= */
 
 function finishGame() {
@@ -1793,26 +3207,32 @@ function finishGame() {
 
 
     const percentage =
-        (score /
-        questions.length) *
+        score /
+        questions.length *
         100;
 
 
-    if (percentage >= 90) {
+    if (
+        percentage >= 90
+    ) {
 
         finalMessage.textContent =
             "Outstanding! Your vocabulary is excellent.";
 
     }
 
-    else if (percentage >= 75) {
+    else if (
+        percentage >= 75
+    ) {
 
         finalMessage.textContent =
             "Great job! You have a strong B1/B2 vocabulary.";
 
     }
 
-    else if (percentage >= 60) {
+    else if (
+        percentage >= 60
+    ) {
 
         finalMessage.textContent =
             "Good work! Keep building your vocabulary.";
@@ -1830,24 +3250,15 @@ function finishGame() {
 
 
 /* =========================================================
-   RESTART
-========================================================= */
-
-function restartGame() {
-
-    endScreen.style.display =
-        "none";
-
-    startGame();
-
-}
-
-
-/* =========================================================
-   BUTTON EVENTS
+   EVENTS
 ========================================================= */
 
 startButton.addEventListener(
+    "click",
+    startGame
+);
+
+restartButton.addEventListener(
     "click",
     startGame
 );
@@ -1862,19 +3273,10 @@ passButton.addEventListener(
     passQuestion
 );
 
-restartButton.addEventListener(
-    "click",
-    restartGame
-);
-
-
-/* =========================================================
-   ENTER KEY
-========================================================= */
 
 answerInput.addEventListener(
     "keydown",
-    function(event) {
+    event => {
 
         if (
             event.key === "Enter"
@@ -1891,12 +3293,8 @@ answerInput.addEventListener(
 
 
 /* =========================================================
-   INITIALIZE
+   INITIAL
 ========================================================= */
-
-states =
-    Array(questions.length)
-    .fill("pending");
 
 createRosco();
 
