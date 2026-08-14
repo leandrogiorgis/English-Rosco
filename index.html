@@ -2945,20 +2945,16 @@ function updateRosco() {
 function checkAnswer() {
 
     if (
-        states[currentIndex] !==
-        "pending"
+        states[currentIndex] !== "pending" &&
+        states[currentIndex] !== "passed"
     ) {
-
         return;
-
     }
-
 
     const typed =
         normalizeText(
             answerInput.value
         );
-
 
     if (!typed) {
 
@@ -2971,20 +2967,14 @@ function checkAnswer() {
         answerInput.focus();
 
         return;
-
     }
-
 
     const correct =
         normalizeText(
-            questions[currentIndex]
-                .answer
+            questions[currentIndex].answer
         );
 
-
-    if (
-        typed === correct
-    ) {
+    if (typed === correct) {
 
         states[currentIndex] =
             "correct";
@@ -2997,46 +2987,34 @@ function checkAnswer() {
         feedback.className =
             "feedback correct";
 
-    }
-
-    else {
+    } else {
 
         states[currentIndex] =
             "wrong";
 
         feedback.textContent =
             "✗ Incorrect — Answer: " +
-            questions[currentIndex]
-                .answer;
+            questions[currentIndex].answer;
 
         feedback.className =
             "feedback wrong";
-
     }
 
+    answerInput.disabled = true;
 
-    answerInput.disabled =
-        true;
+    checkButton.disabled = true;
 
-    checkButton.disabled =
-        true;
-
-    passButton.disabled =
-        true;
+    passButton.disabled = true;
 
     updateScore();
 
     updateRosco();
 
-
     setTimeout(
         goToNextQuestion,
         1300
     );
-
 }
-
-
 /* =========================================================
    PASS
 ========================================================= */
