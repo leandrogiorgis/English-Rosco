@@ -23,14 +23,8 @@ body {
 }
 
 body {
-
     min-height: 100vh;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
 
     background:
@@ -46,17 +40,13 @@ body {
 
 
 /* =========================================================
-   CONTEST LIGHTS
+   BACKGROUND LIGHTS
 ========================================================= */
 
 body::before {
-
     content: "";
-
     position: fixed;
-
     inset: 0;
-
     pointer-events: none;
 
     background:
@@ -80,21 +70,15 @@ body::before {
 ========================================================= */
 
 .app {
-
     position: relative;
-
     z-index: 1;
 
     width: 100%;
-
     max-width: 1250px;
-
     min-height: 100vh;
 
     margin: auto;
-
     padding: 25px 25px 35px;
-
 }
 
 
@@ -103,19 +87,14 @@ body::before {
 ========================================================= */
 
 .header {
-
     text-align: center;
-
     margin-bottom: 5px;
-
 }
 
 .header h1 {
-
     margin: 0;
 
-    font-size:
-        clamp(32px, 5vw, 58px);
+    font-size: clamp(32px, 5vw, 58px);
 
     font-weight: 900;
 
@@ -126,11 +105,9 @@ body::before {
     text-shadow:
         0 0 12px rgba(96,165,250,.8),
         0 0 35px rgba(59,130,246,.4);
-
 }
 
 .subtitle {
-
     margin-top: 6px;
 
     color: #c4b5fd;
@@ -140,7 +117,6 @@ body::before {
     letter-spacing: 2px;
 
     text-transform: uppercase;
-
 }
 
 
@@ -149,7 +125,6 @@ body::before {
 ========================================================= */
 
 .start-screen {
-
     min-height: 80vh;
 
     display: flex;
@@ -161,19 +136,14 @@ body::before {
     justify-content: center;
 
     text-align: center;
-
 }
 
 .start-screen h2 {
-
     font-size: 38px;
-
     margin: 0 0 15px;
-
 }
 
 .start-description {
-
     max-width: 720px;
 
     color: #cbd5e1;
@@ -181,11 +151,9 @@ body::before {
     line-height: 1.7;
 
     font-size: 18px;
-
 }
 
 .info-container {
-
     display: flex;
 
     flex-wrap: wrap;
@@ -195,11 +163,9 @@ body::before {
     gap: 10px;
 
     margin: 25px 0 35px;
-
 }
 
 .info-chip {
-
     padding: 10px 17px;
 
     border-radius: 30px;
@@ -209,11 +175,9 @@ body::before {
     border: 1px solid #475569;
 
     color: #cbd5e1;
-
 }
 
 .start-button {
-
     padding: 17px 40px;
 
     font-size: 21px;
@@ -239,16 +203,13 @@ body::before {
         0 8px 30px rgba(59,130,246,.35);
 
     transition: .2s;
-
 }
 
 .start-button:hover {
-
     transform: translateY(-3px);
 
     box-shadow:
         0 12px 40px rgba(59,130,246,.55);
-
 }
 
 
@@ -257,9 +218,7 @@ body::before {
 ========================================================= */
 
 .game-screen {
-
     display: none;
-
 }
 
 
@@ -268,7 +227,6 @@ body::before {
 ========================================================= */
 
 .scoreboard {
-
     display: flex;
 
     justify-content: center;
@@ -278,19 +236,15 @@ body::before {
     gap: 70px;
 
     margin: 10px 0 5px;
-
 }
 
 .score-box {
-
     min-width: 130px;
 
     text-align: center;
-
 }
 
 .score-label {
-
     color: #94a3b8;
 
     font-size: 13px;
@@ -298,27 +252,20 @@ body::before {
     text-transform: uppercase;
 
     letter-spacing: 2px;
-
 }
 
 .score-number {
-
     font-size: 30px;
 
     font-weight: 900;
-
 }
 
 .score-number.green {
-
     color: #4ade80;
-
 }
 
 .score-number.yellow {
-
     color: #facc15;
-
 }
 
 
@@ -327,7 +274,6 @@ body::before {
 ========================================================= */
 
 .rosco-container {
-
     position: relative;
 
     width: min(650px, 88vw);
@@ -335,23 +281,18 @@ body::before {
     aspect-ratio: 1 / 1;
 
     margin: 5px auto 15px;
-
 }
 
 .rosco {
-
     position: absolute;
 
     inset: 0;
-
 }
 
 .letter {
-
     position: absolute;
 
     width: 56px;
-
     height: 56px;
 
     transform:
@@ -381,11 +322,9 @@ body::before {
     transition: .25s;
 
     user-select: none;
-
 }
 
 .letter.current {
-
     background:
         linear-gradient(
             145deg,
@@ -404,11 +343,9 @@ body::before {
         0 0 40px rgba(59,130,246,.8);
 
     z-index: 5;
-
 }
 
 .letter.correct {
-
     background:
         linear-gradient(
             145deg,
@@ -417,11 +354,9 @@ body::before {
         );
 
     border-color: #86efac;
-
 }
 
 .letter.wrong {
-
     background:
         linear-gradient(
             145deg,
@@ -430,11 +365,9 @@ body::before {
         );
 
     border-color: #fca5a5;
-
 }
 
 .letter.passed {
-
     background:
         linear-gradient(
             145deg,
@@ -443,7 +376,6 @@ body::before {
         );
 
     border-color: #fde047;
-
 }
 
 
@@ -452,7 +384,6 @@ body::before {
 ========================================================= */
 
 .rosco-center {
-
     position: absolute;
 
     top: 50%;
@@ -489,21 +420,17 @@ body::before {
     box-shadow:
         inset 0 0 40px rgba(0,0,0,.8),
         0 0 40px rgba(30,64,175,.25);
-
 }
 
 .center-label {
-
     color: #64748b;
 
     font-size: 12px;
 
     letter-spacing: 3px;
-
 }
 
 .current-letter {
-
     margin-top: 5px;
 
     font-size: 76px;
@@ -516,7 +443,6 @@ body::before {
 
     text-shadow:
         0 0 15px rgba(96,165,250,.8);
-
 }
 
 
@@ -525,7 +451,6 @@ body::before {
 ========================================================= */
 
 .question-panel {
-
     max-width: 900px;
 
     margin: auto;
@@ -547,11 +472,9 @@ body::before {
         0 15px 50px rgba(0,0,0,.35);
 
     text-align: center;
-
 }
 
 .question-label {
-
     color: #94a3b8;
 
     font-size: 14px;
@@ -559,11 +482,9 @@ body::before {
     text-transform: uppercase;
 
     letter-spacing: 2px;
-
 }
 
 .question {
-
     min-height: 75px;
 
     display: flex;
@@ -577,7 +498,6 @@ body::before {
     font-size: 24px;
 
     line-height: 1.45;
-
 }
 
 
@@ -586,7 +506,6 @@ body::before {
 ========================================================= */
 
 .answer-area {
-
     display: flex;
 
     justify-content: center;
@@ -594,11 +513,9 @@ body::before {
     gap: 10px;
 
     margin-top: 20px;
-
 }
 
 .answer-input {
-
     flex: 1;
 
     max-width: 600px;
@@ -620,26 +537,20 @@ body::before {
     text-align: center;
 
     outline: none;
-
 }
 
 .answer-input:focus {
-
     border-color: #60a5fa;
 
     box-shadow:
         0 0 0 3px rgba(59,130,246,.15);
-
 }
 
 .answer-input::placeholder {
-
     color: #64748b;
-
 }
 
 .check-button {
-
     padding: 14px 22px;
 
     border: none;
@@ -655,13 +566,10 @@ body::before {
     font-weight: 800;
 
     cursor: pointer;
-
 }
 
 .check-button:hover {
-
     filter: brightness(1.15);
-
 }
 
 
@@ -670,13 +578,10 @@ body::before {
 ========================================================= */
 
 .pass-area {
-
     margin-top: 12px;
-
 }
 
 .pass-button {
-
     padding: 10px 20px;
 
     border: none;
@@ -690,13 +595,21 @@ body::before {
     font-weight: 800;
 
     cursor: pointer;
-
 }
 
 .pass-button:hover {
-
     filter: brightness(1.15);
+}
 
+
+/* =========================================================
+   DISABLED BUTTONS
+========================================================= */
+
+button:disabled {
+    opacity: .5;
+
+    cursor: not-allowed;
 }
 
 
@@ -705,7 +618,6 @@ body::before {
 ========================================================= */
 
 .feedback {
-
     min-height: 38px;
 
     margin-top: 13px;
@@ -713,25 +625,18 @@ body::before {
     font-size: 20px;
 
     font-weight: 800;
-
 }
 
 .feedback.correct {
-
     color: #4ade80;
-
 }
 
 .feedback.wrong {
-
     color: #f87171;
-
 }
 
 .feedback.pass {
-
     color: #facc15;
-
 }
 
 
@@ -740,7 +645,6 @@ body::before {
 ========================================================= */
 
 .end-screen {
-
     display: none;
 
     min-height: 80vh;
@@ -752,19 +656,15 @@ body::before {
     justify-content: center;
 
     text-align: center;
-
 }
 
 .end-screen h2 {
-
     font-size: 42px;
 
     margin-bottom: 5px;
-
 }
 
 .final-score {
-
     margin: 25px 0;
 
     font-size: 82px;
@@ -775,11 +675,9 @@ body::before {
 
     text-shadow:
         0 0 25px rgba(74,222,128,.4);
-
 }
 
 .final-message {
-
     max-width: 600px;
 
     color: #cbd5e1;
@@ -787,11 +685,9 @@ body::before {
     font-size: 21px;
 
     margin-bottom: 30px;
-
 }
 
 .restart-button {
-
     padding: 15px 30px;
 
     border: none;
@@ -812,7 +708,6 @@ body::before {
     font-weight: 800;
 
     cursor: pointer;
-
 }
 
 
@@ -823,68 +718,45 @@ body::before {
 @media (max-width: 700px) {
 
     .app {
-
         padding:
             15px 10px 25px;
-
     }
 
     .scoreboard {
-
         gap: 30px;
-
     }
 
     .letter {
-
         width: 43px;
-
         height: 43px;
-
         font-size: 16px;
-
     }
 
     .rosco-center {
-
         width: 150px;
-
         height: 150px;
-
     }
 
     .current-letter {
-
         font-size: 52px;
-
     }
 
     .question {
-
         font-size: 19px;
-
     }
 
     .answer-area {
-
         flex-direction: column;
-
     }
 
     .answer-input {
-
         width: 100%;
-
         max-width: none;
-
     }
 
     .check-button {
-
         width: 100%;
-
     }
-
 }
 
 
@@ -895,29 +767,19 @@ body::before {
 @media (max-width: 420px) {
 
     .letter {
-
         width: 37px;
-
         height: 37px;
-
         font-size: 14px;
-
     }
 
     .rosco-center {
-
         width: 125px;
-
         height: 125px;
-
     }
 
     .current-letter {
-
         font-size: 44px;
-
     }
-
 }
 
 </style>
@@ -947,7 +809,7 @@ body::before {
 
 
 <!-- =====================================================
-     START
+     START SCREEN
 ===================================================== -->
 
 <section
@@ -1155,7 +1017,7 @@ body::before {
 
 
 <!-- =====================================================
-     END
+     END SCREEN
 ===================================================== -->
 
 <section
@@ -1200,1424 +1062,1133 @@ body::before {
 
 /* =========================================================
    QUESTION BANK
-
-   10 questions per letter = 260 total.
-
-   Every new game randomly selects one question
-   for each letter.
+   10 QUESTIONS PER LETTER
+   260 QUESTIONS TOTAL
 ========================================================= */
 
 const questionBank = {
 
 A: [
-
     {
         answer: "ACHIEVE",
         question: "To successfully reach a goal after making an effort."
     },
-
     {
         answer: "ANNOYED",
         question: "Slightly angry because something is bothering you."
     },
-
     {
         answer: "AWARE",
         question: "Knowing or understanding that something exists or is happening."
     },
-
     {
         answer: "APPROACH",
         question: "A way of dealing with a problem or situation."
     },
-
     {
         answer: "ASSUME",
         question: "To believe something is true without having complete proof."
     },
-
     {
         answer: "ADMIT",
         question: "To agree that something is true, especially something uncomfortable."
     },
-
     {
         answer: "AFFORD",
         question: "To have enough money to pay for something."
     },
-
     {
         answer: "ATTEMPT",
         question: "An effort to do or achieve something."
     },
-
     {
         answer: "ACCURATE",
         question: "Correct and free from mistakes."
     },
-
     {
         answer: "ADAPT",
         question: "To change your behaviour or approach to suit a new situation."
     }
-
 ],
 
 B: [
-
     {
         answer: "BREAK DOWN",
         question: "A machine or vehicle stops working."
     },
-
     {
         answer: "BACK UP",
         question: "To make a copy of computer data in case the original is lost."
     },
-
     {
         answer: "BROADCAST",
         question: "To send a programme or information by television, radio or the internet."
     },
-
     {
         answer: "BARGAIN",
         question: "Something bought for a much lower price than expected."
     },
-
     {
         answer: "BOTHER",
         question: "To annoy someone or make an effort to do something."
     },
-
     {
         answer: "BEHAVE",
         question: "To act in a particular way, especially in a social situation."
     },
-
     {
         answer: "BENEFIT",
         question: "An advantage or something useful that you gain."
     },
-
     {
         answer: "BELONG",
         question: "To be owned by someone or to feel that you are part of a group."
     },
-
     {
         answer: "BOOST",
         question: "To increase or improve something."
     },
-
     {
         answer: "BREAKTHROUGH",
         question: "An important discovery or development that solves a problem."
     }
-
 ],
 
 C: [
-
     {
         answer: "CHALLENGE",
         question: "Something difficult that tests your ability or skill."
     },
-
     {
         answer: "CARRY ON",
         question: "Which phrasal verb means to continue doing something?"
     },
-
     {
         answer: "CONVINCE",
         question: "To make someone believe that something is true."
     },
-
     {
         answer: "CONSIDER",
         question: "To think carefully about something before making a decision."
     },
-
     {
         answer: "COMMITMENT",
         question: "A promise or willingness to give your time or energy to something."
     },
-
     {
         answer: "COMPLEX",
         question: "Complicated and involving many different parts."
     },
-
     {
         answer: "CONSEQUENCE",
         question: "A result that happens because of a particular action."
     },
-
     {
         answer: "CONTRIBUTE",
         question: "To give something, such as money, time or ideas, to a cause or project."
     },
-
     {
         answer: "COPE",
         question: "To deal successfully with a difficult situation."
     },
-
     {
         answer: "CURIOUS",
         question: "Wanting to know or learn something."
     }
-
 ],
 
 D: [
-
     {
         answer: "DEAL WITH",
         question: "Which phrasal verb means to manage or solve a problem?"
     },
-
     {
         answer: "DEMAND",
         question: "A strong request for something."
     },
-
     {
         answer: "DECREASE",
         question: "To become smaller in amount, size or importance."
     },
-
     {
         answer: "DETERMINED",
         question: "Having made a firm decision and being unwilling to give up."
     },
-
     {
         answer: "DISAPPOINTED",
         question: "Unhappy because something was not as good as you expected."
     },
-
     {
         answer: "DISTRACT",
         question: "To prevent someone from concentrating on something."
     },
-
     {
         answer: "DRASTIC",
         question: "Very serious or extreme and likely to have a strong effect."
     },
-
     {
         answer: "DRAWBACK",
         question: "A disadvantage or negative aspect of something."
     },
-
     {
         answer: "DUE",
         question: "Expected or scheduled to happen at a particular time."
     },
-
     {
         answer: "DEVELOP",
         question: "To grow, change or become more advanced."
     }
-
 ],
 
 E: [
-
     {
         answer: "EXHAUSTED",
         question: "Extremely tired and without much energy."
     },
-
     {
         answer: "ENCOUNTER",
         question: "To unexpectedly experience or meet someone or something."
     },
-
     {
         answer: "ENCOURAGE",
         question: "To give someone confidence or support."
     },
-
     {
         answer: "ESSENTIAL",
         question: "Absolutely necessary or extremely important."
     },
-
     {
         answer: "ESTIMATE",
         question: "A calculation or judgement about the likely size, cost or value of something."
     },
-
     {
         answer: "EFFICIENT",
         question: "Working well without wasting time, energy or resources."
     },
-
     {
         answer: "EMERGE",
         question: "To appear or become known."
     },
-
     {
         answer: "ENABLE",
         question: "To make it possible for someone to do something."
     },
-
     {
         answer: "EVIDENCE",
         question: "Facts or information that show whether something is true."
     },
-
     {
         answer: "EXPECTATION",
         question: "A belief about what is likely to happen."
     }
-
 ],
 
 F: [
-
     {
         answer: "FIGURE OUT",
         question: "Which phrasal verb means to understand or find the answer to something?"
     },
-
     {
         answer: "FLEXIBLE",
         question: "Able to change or adapt easily to different situations."
     },
-
     {
         answer: "FASCINATING",
         question: "Extremely interesting and attractive."
     },
-
     {
         answer: "FAILURE",
         question: "The lack of success in achieving something."
     },
-
     {
         answer: "FREQUENTLY",
         question: "Often or regularly."
     },
-
     {
         answer: "FUNDAMENTAL",
         question: "Basic and extremely important."
     },
-
     {
         answer: "FULFIL",
         question: "To achieve something that you hoped or expected to achieve."
     },
-
     {
         answer: "FRUSTRATED",
         question: "Annoyed because you cannot do or achieve something."
     },
-
     {
         answer: "FORECAST",
         question: "A prediction about what is likely to happen."
     },
-
     {
         answer: "FURTHER",
         question: "Additional or more advanced."
     }
-
 ],
 
 G: [
-
     {
         answer: "GENERALLY",
         question: "In most cases or usually."
     },
-
     {
         answer: "GET ALONG",
         question: "Which phrasal verb means to have a good relationship with someone?"
     },
-
     {
         answer: "GIVE UP",
         question: "Which phrasal verb means to stop trying?"
     },
-
     {
         answer: "GRATEFUL",
         question: "Feeling thankful for something."
     },
-
     {
         answer: "GENERATE",
         question: "To produce or create something."
     },
-
     {
-        answer: "Genuine",
+        answer: "GENUINE",
         question: "Real and sincere, rather than false or artificial."
     },
-
     {
         answer: "GOAL",
         question: "Something that you hope to achieve."
     },
-
     {
         answer: "GRADUALLY",
         question: "Slowly, over a period of time."
     },
-
     {
         answer: "GUIDELINE",
         question: "Advice about how something should be done."
     },
-
     {
         answer: "GAP",
         question: "A difference or empty space between two things."
     }
-
 ],
 
 H: [
-
     {
         answer: "HESITATE",
         question: "To pause before doing or saying something because you are uncertain."
     },
-
     {
         answer: "HANDLE",
         question: "To deal with a difficult situation successfully."
     },
-
     {
         answer: "HARMFUL",
         question: "Causing damage or negative effects."
     },
-
     {
         answer: "HIGHLIGHT",
         question: "The most important or interesting part of something."
     },
-
     {
         answer: "HABIT",
         question: "Something you regularly do, often without thinking."
     },
-
     {
         answer: "HOSTILE",
         question: "Unfriendly or aggressive."
     },
-
     {
         answer: "HOUSEHOLD",
         question: "All the people who live together in one home."
     },
-
     {
         answer: "HUMBLE",
         question: "Not believing that you are better or more important than others."
     },
-
     {
         answer: "HURDLE",
         question: "A problem or difficulty that must be overcome."
     },
-
     {
         answer: "HYPOTHESIS",
         question: "An idea or explanation that can be tested."
     }
-
 ],
 
 I: [
-
     {
         answer: "IMPRESSIVE",
         question: "Causing admiration because something is very good or remarkable."
     },
-
     {
         answer: "IMPROVE",
         question: "To become better or make something better."
     },
-
     {
         answer: "INFLUENCE",
         question: "The power to affect someone's behaviour or decisions."
     },
-
     {
         answer: "INCREASE",
         question: "To become larger in amount or number."
     },
-
     {
         answer: "INDEPENDENT",
         question: "Able to act or make decisions without relying on others."
     },
-
     {
         answer: "INEVITABLE",
         question: "Certain to happen and impossible to avoid."
     },
-
     {
         answer: "INSIGHT",
         question: "A clear and deep understanding of a situation."
     },
-
     {
         answer: "INTEND",
         question: "To plan or mean to do something."
     },
-
     {
         answer: "INVOLVE",
         question: "To include someone or something in an activity or situation."
     },
-
     {
         answer: "ISSUE",
         question: "An important problem or topic that needs to be discussed."
     }
-
 ],
 
 J: [
-
     {
         answer: "JEALOUS",
         question: "Unhappy because someone has something that you would like to have."
     },
-
     {
         answer: "JUSTIFY",
         question: "To give a good reason for something you have done."
     },
-
     {
         answer: "JUDGEMENT",
         question: "An opinion or decision based on careful thought."
     },
-
     {
         answer: "JOINT",
         question: "Shared or done by two or more people or organisations."
     },
-
     {
         answer: "JOURNEY",
         question: "The act of travelling from one place to another."
     },
-
     {
         answer: "JUSTICE",
         question: "Fair treatment according to the law or accepted principles."
     },
-
-    {
-        answer: "JUSTIFY",
-        question: "To show that an action or decision was reasonable."
-    },
-
     {
         answer: "JUMP TO CONCLUSIONS",
         question: "To form an opinion too quickly without enough evidence."
     },
-
     {
         answer: "JOBLESS",
         question: "Without a job or employment."
     },
-
     {
         answer: "JUST",
         question: "Fair and reasonable."
+    },
+    {
+        answer: "JUSTIFIABLE",
+        question: "Reasonable and able to be defended with good reasons."
     }
-
 ],
 
 K: [
-
     {
         answer: "KEEP UP",
         question: "Which phrasal verb means to continue at the same speed or level?"
     },
-
     {
         answer: "KEEP IN MIND",
         question: "Which expression means to remember or consider something?"
     },
-
     {
         answer: "KEY",
         question: "Extremely important or essential."
     },
-
     {
         answer: "KNOWLEDGE",
         question: "Information and understanding gained through learning or experience."
     },
-
     {
         answer: "KIND",
         question: "Caring and considerate towards other people."
     },
-
     {
         answer: "KICK OFF",
         question: "Which phrasal verb can mean to start an event or activity?"
     },
-
     {
         answer: "KNOCK OUT",
         question: "Which phrasal verb means to defeat someone in a competition?"
     },
-
     {
         answer: "KEEP TRACK",
         question: "To continue to know what is happening or where something is."
     },
-
     {
         answer: "KNOWN",
         question: "Recognised or familiar to people."
     },
-
     {
-        answer: "Keen",
+        answer: "KEEN",
         question: "Very interested or enthusiastic about something."
     }
-
 ],
 
 L: [
-
     {
         answer: "LIKELY",
         question: "If something will probably happen, it is ______ to happen."
     },
-
     {
         answer: "LOOK AFTER",
         question: "Which phrasal verb means to take care of someone or something?"
     },
-
     {
         answer: "LOOK FORWARD",
         question: "Which expression means to feel excited about something that will happen?"
     },
-
     {
         answer: "LIMIT",
         question: "The greatest amount or level that is allowed."
     },
-
     {
         answer: "LACK",
         question: "To not have enough of something."
     },
-
     {
         answer: "LEGACY",
         question: "Something valuable left behind by someone from the past."
     },
-
     {
         answer: "LOGICAL",
         question: "Based on clear reasoning and sensible ideas."
     },
-
     {
         answer: "LOYAL",
         question: "Showing strong support or commitment to someone or something."
     },
-
     {
         answer: "LIVELY",
         question: "Full of energy and enthusiasm."
     },
-
     {
         answer: "LONG-TERM",
         question: "Continuing for a long period of time."
     }
-
 ],
 
 M: [
-
     {
         answer: "MISUNDERSTAND",
         question: "To understand something incorrectly."
     },
-
     {
         answer: "MAKE UP",
         question: "Which phrasal verb can mean to invent a story or excuse?"
     },
-
     {
         answer: "MANAGE",
         question: "To succeed in doing something difficult."
     },
-
     {
         answer: "MOTIVATE",
         question: "To make someone want to do something."
     },
-
     {
         answer: "MEANWHILE",
         question: "At the same time as something else is happening."
     },
-
     {
         answer: "MAINTAIN",
         question: "To keep something at the same level or condition."
     },
-
     {
         answer: "MEASURE",
         question: "To find the size, amount or degree of something."
     },
-
     {
         answer: "MODERATE",
         question: "Not extreme or excessive."
     },
-
     {
         answer: "MUTUAL",
         question: "Shared by two or more people."
     },
-
     {
         answer: "MISLEADING",
         question: "Giving the wrong idea or impression."
     }
-
 ],
 
 N: [
-
     {
         answer: "NEGOTIATE",
         question: "To discuss something in order to reach an agreement."
     },
-
     {
         answer: "NOTICE",
         question: "To become aware of something."
     },
-
     {
         answer: "NECESSARY",
         question: "Needed in order to achieve a particular result."
     },
-
     {
         answer: "NEVERTHELESS",
         question: "Despite what has just been said."
     },
-
     {
         answer: "NARROW",
         question: "Having a small distance from one side to the other."
     },
-
     {
         answer: "NEGLECT",
         question: "To fail to give enough attention or care to something."
     },
-
     {
         answer: "NOTION",
         question: "An idea or belief about something."
     },
-
     {
         answer: "NUMEROUS",
         question: "Existing in large numbers."
     },
-
     {
         answer: "NETWORK",
         question: "A system of people or organisations connected for a particular purpose."
     },
-
     {
         answer: "NURTURE",
         question: "To help someone or something develop and grow."
     }
-
 ],
 
 O: [
-
     {
         answer: "OVERCOME",
         question: "To successfully deal with or defeat a difficult problem."
     },
-
     {
         answer: "OUTCOME",
         question: "The final result of an action or situation."
     },
-
     {
         answer: "OBVIOUS",
         question: "Easy to see, understand or recognise."
     },
-
     {
         answer: "OCCUR",
         question: "To happen."
     },
-
     {
         answer: "OBTAIN",
         question: "To get or acquire something."
     },
-
     {
         answer: "OPTION",
         question: "One of several choices that can be made."
     },
-
     {
         answer: "OBJECTIVE",
         question: "A goal or result that you are trying to achieve."
     },
-
     {
         answer: "OCCASIONALLY",
         question: "Sometimes, but not regularly."
     },
-
     {
         answer: "OVERWHELMED",
         question: "Feeling unable to deal with a situation because there is too much to handle."
     },
-
     {
         answer: "ONGOING",
         question: "Continuing to happen."
     }
-
 ],
 
 P: [
-
     {
         answer: "PUT OFF",
         question: "Which phrasal verb means to postpone something?"
     },
-
     {
         answer: "PERSIST",
         question: "To continue doing something despite difficulty or opposition."
     },
-
     {
         answer: "PREVENT",
         question: "To stop something from happening."
     },
-
     {
         answer: "PERCEIVE",
         question: "To notice or understand something in a particular way."
     },
-
     {
         answer: "PRIORITY",
         question: "Something that is more important than other things."
     },
-
     {
         answer: "PRECISE",
         question: "Exact and accurate."
     },
-
     {
         answer: "PERSUADE",
         question: "To convince someone to do or believe something."
     },
-
     {
         answer: "PROGRESS",
         question: "Movement towards a better or more advanced state."
     },
-
     {
         answer: "PROVIDE",
         question: "To give someone something that they need."
     },
-
     {
         answer: "PROSPECT",
         question: "The possibility or likelihood of something happening."
     }
-
 ],
 
 Q: [
-
     {
         answer: "QUALIFIED",
         question: "Having the necessary skills, knowledge or training for a job."
     },
-
     {
         answer: "QUESTIONNAIRE",
         question: "A written set of questions used to collect information."
     },
-
     {
         answer: "QUICK-WITTED",
         question: "Able to think and respond quickly and intelligently."
     },
-
     {
         answer: "QUIT",
         question: "To stop doing something or leave a job."
     },
-
     {
         answer: "QUANTITY",
         question: "An amount or number of something."
     },
-
     {
         answer: "QUALIFY",
         question: "To meet the necessary requirements for something."
     },
-
     {
         answer: "QUOTE",
         question: "To repeat someone's exact words."
     },
-
     {
         answer: "QUERY",
         question: "A question, especially one requiring an answer or explanation."
     },
-
     {
         answer: "QUEST",
         question: "A long search for something important."
     },
-
     {
         answer: "QUITE",
         question: "To a certain degree or fairly."
     }
-
 ],
 
 R: [
-
     {
         answer: "RELIABLE",
         question: "Someone or something that can be trusted to do what is expected."
     },
-
     {
         answer: "RUN INTO",
         question: "Which phrasal verb can mean to unexpectedly meet someone?"
     },
-
     {
         answer: "REQUIRE",
         question: "To need something."
     },
-
     {
         answer: "REASONABLE",
         question: "Fair, sensible or acceptable."
     },
-
     {
         answer: "RELEVANT",
         question: "Connected with the subject being discussed."
     },
-
     {
         answer: "RELUCTANT",
         question: "Not willing or eager to do something."
     },
-
     {
         answer: "RESOLVE",
         question: "To solve a problem."
     },
-
     {
         answer: "REVEAL",
         question: "To make something previously unknown known."
     },
-
     {
         answer: "REPUTATION",
         question: "The opinion people generally have about someone or something."
     },
-
     {
         answer: "RESPONSIBLE",
         question: "Having a duty to deal with something or someone."
     }
-
 ],
 
 S: [
-
     {
         answer: "SETTLE DOWN",
         question: "Which phrasal verb means to become calmer or live a more stable life?"
     },
-
     {
         answer: "SIGNIFICANT",
         question: "Important or large enough to have an effect."
     },
-
     {
         answer: "SUGGEST",
         question: "To mention an idea or possibility for someone to consider."
     },
-
     {
         answer: "SUSTAINABLE",
         question: "Able to continue without causing serious environmental or social damage."
     },
-
     {
         answer: "STRUGGLE",
         question: "To have difficulty doing or achieving something."
     },
-
     {
         answer: "SINCERE",
         question: "Honest and genuine in what you say or feel."
     },
-
     {
         answer: "SHORTAGE",
         question: "A situation in which there is not enough of something."
     },
-
     {
         answer: "SETBACK",
         question: "A problem that delays or prevents progress."
     },
-
     {
         answer: "SPECIFIC",
         question: "Clearly defined or identified."
     },
-
     {
         answer: "SOLVE",
         question: "To find an answer to a problem."
     }
-
 ],
 
 T: [
-
     {
         answer: "THOROUGH",
         question: "Very careful and complete, paying attention to every detail."
     },
-
     {
         answer: "TAKE OVER",
         question: "Which phrasal verb means to take control of something?"
     },
-
     {
         answer: "TEND",
         question: "To usually do or be something."
     },
-
     {
         answer: "THREAT",
         question: "Something that could cause harm or danger."
     },
-
     {
         answer: "TOLERATE",
         question: "To accept something unpleasant without complaining."
     },
-
     {
         answer: "TREMENDOUS",
         question: "Very large, powerful or impressive."
     },
-
     {
         answer: "TYPICAL",
         question: "Having the usual characteristics of a particular person or thing."
     },
-
     {
         answer: "TRANSFORM",
         question: "To change something completely."
     },
-
     {
         answer: "TRIGGER",
         question: "To cause something to start or happen."
     },
-
     {
         answer: "TRUSTWORTHY",
         question: "Deserving of trust."
     }
-
 ],
 
 U: [
-
     {
         answer: "UNEXPECTED",
         question: "Something that happens without being predicted."
     },
-
     {
         answer: "UNDERMINE",
         question: "To gradually make someone or something less effective or confident."
     },
-
     {
         answer: "UNIQUE",
         question: "Being the only one of its kind."
     },
-
     {
         answer: "URGENT",
         question: "Needing immediate attention."
     },
-
     {
         answer: "ULTIMATELY",
         question: "Finally, after a series of events."
     },
-
     {
         answer: "UNCERTAIN",
         question: "Not known, decided or completely sure."
     },
-
     {
         answer: "UNWILLING",
         question: "Not wanting to do something."
     },
-
     {
         answer: "UPDATE",
         question: "To give someone the latest information."
     },
-
     {
         answer: "UTILISE",
         question: "To use something effectively for a particular purpose."
     },
-
     {
         answer: "UNDERSTAND",
         question: "To know the meaning of something."
     }
-
 ],
 
 V: [
-
     {
         answer: "VERSATILE",
         question: "Able to be used for many different purposes."
     },
-
     {
         answer: "VALID",
         question: "Based on reasonable evidence or logic."
     },
-
     {
         answer: "VARY",
         question: "To change or be different depending on the situation."
     },
-
     {
         answer: "VITAL",
         question: "Extremely important or necessary."
     },
-
     {
         answer: "VISIBLE",
         question: "Able to be seen."
     },
-
     {
         answer: "VOLUNTARY",
         question: "Done willingly and without being forced."
     },
-
     {
         answer: "VERIFY",
         question: "To check that something is true or accurate."
     },
-
     {
         answer: "VIABLE",
         question: "Able to work successfully or realistically."
     },
-
     {
         answer: "VULNERABLE",
         question: "Easily harmed, attacked or affected."
     },
-
     {
         answer: "VIRTUALLY",
         question: "Almost or very nearly."
     }
-
 ],
 
 W: [
-
     {
         answer: "WITHDRAW",
         question: "To remove yourself or something from a situation."
     },
-
     {
         answer: "WORK OUT",
         question: "Which phrasal verb means to solve a problem or understand something?"
     },
-
     {
         answer: "WORTHWHILE",
         question: "Worth the time, money or effort spent."
     },
-
     {
         answer: "WIDESPREAD",
         question: "Existing or happening in many places."
     },
-
     {
         answer: "WILLING",
         question: "Happy or prepared to do something."
     },
-
     {
         answer: "WEALTH",
         question: "A large amount of money or valuable possessions."
     },
-
     {
         answer: "WHEREAS",
         question: "Used to compare two different facts or situations."
     },
-
     {
         answer: "WITNESS",
         question: "A person who sees an event happen."
     },
-
     {
         answer: "WEAKNESS",
         question: "A fault or lack of strength."
     },
-
     {
         answer: "WITHSTAND",
         question: "To successfully resist something difficult or damaging."
     }
-
 ],
 
 X: [
-
     {
         answer: "XENOPHOBIA",
         question: "Fear or dislike of people from other countries or cultures."
     },
-
     {
         answer: "XENOPHOBIC",
         question: "Showing fear or dislike of people from other countries."
     },
-
     {
         answer: "X-RAY",
         question: "A medical image used to see inside the body."
     },
-
     {
         answer: "XENON",
         question: "A chemical element that is a colourless gas."
     },
-
     {
         answer: "XEROX",
         question: "To make a photocopy of a document."
     },
-
     {
         answer: "XYLOPHONE",
         question: "A musical instrument made of wooden bars."
     },
-
     {
         answer: "XENIAL",
         question: "Friendly towards guests or strangers."
     },
-
     {
         answer: "XENOPHILE",
         question: "A person who is attracted to foreign cultures or people."
     },
-
     {
         answer: "X-FACTOR",
         question: "A special quality that makes someone or something successful."
     },
-
     {
         answer: "XENIALITY",
         question: "Friendliness towards guests or strangers."
     }
-
 ],
 
 Y: [
-
     {
         answer: "YIELD",
         question: "To produce a result, such as a financial return."
     },
-
     {
         answer: "YEARLY",
         question: "Happening once every year."
     },
-
     {
         answer: "YOUNGSTER",
         question: "A young person."
     },
-
     {
         answer: "YELL",
         question: "To shout loudly."
     },
-
     {
         answer: "YAWN",
         question: "To open your mouth widely because you are tired."
     },
-
     {
         answer: "YEAR-ROUND",
         question: "Happening throughout the entire year."
     },
-
     {
         answer: "YARDSTICK",
         question: "A standard used for comparing or judging something."
     },
-
     {
         answer: "YEARN",
         question: "To strongly desire something."
     },
-
     {
         answer: "YES-MAN",
         question: "A person who always agrees with someone in authority."
     },
-
     {
         answer: "YIELDING",
         question: "Willing to give way or accept something."
     }
-
 ],
 
 Z: [
-
     {
         answer: "ZONE OUT",
         question: "Which phrasal verb means to stop paying attention because your mind is somewhere else?"
     },
-
     {
         answer: "ZERO IN",
         question: "Which phrasal verb means to focus closely on something?"
     },
-
     {
         answer: "ZEST",
         question: "Great enthusiasm and energy."
     },
-
     {
         answer: "ZANY",
         question: "Funny or unusual in a silly way."
     },
-
     {
         answer: "ZEALOUS",
         question: "Very enthusiastic and energetic in supporting something."
     },
-
     {
         answer: "ZIGZAG",
         question: "A line that repeatedly changes direction from one side to another."
     },
-
     {
         answer: "ZIP",
         question: "To move very quickly."
     },
-
     {
         answer: "ZOOM",
         question: "To move very quickly."
     },
-
     {
         answer: "ZONING",
         question: "The division of an area into sections for different uses."
     },
-
     {
         answer: "ZOO",
         question: "A place where wild animals are kept for people to see."
     }
-
-]
-
-};
+];
 
 
 /* =========================================================
-   STATE
+   GAME STATE
 ========================================================= */
 
 let questions = [];
@@ -2630,7 +2201,7 @@ let score = 0;
 
 
 /* =========================================================
-   DOM
+   DOM ELEMENTS
 ========================================================= */
 
 const startScreen =
@@ -2683,7 +2254,7 @@ const restartButton =
 
 
 /* =========================================================
-   NORMALIZE
+   NORMALIZE TEXT
 ========================================================= */
 
 function normalizeText(text) {
@@ -2698,7 +2269,7 @@ function normalizeText(text) {
 
 
 /* =========================================================
-   RANDOM QUESTION FOR EACH LETTER
+   GENERATE RANDOM ROSCO
 ========================================================= */
 
 function generateRandomRosco() {
@@ -2737,7 +2308,7 @@ function generateRandomRosco() {
 
 
 /* =========================================================
-   START
+   START GAME
 ========================================================= */
 
 function startGame() {
@@ -2872,7 +2443,7 @@ function showQuestion() {
 
 
 /* =========================================================
-   ROSCO UPDATE
+   UPDATE ROSCO VISUAL
 ========================================================= */
 
 function updateRosco() {
@@ -2888,16 +2459,14 @@ function updateRosco() {
             element.className =
                 "letter";
 
-            if (
-                index === currentIndex &&
-                states[index] === "pending"
-            ) {
 
-                element.classList.add(
-                    "current"
-                );
-
-            }
+            /*
+             * IMPORTANT:
+             *
+             * A passed question remains yellow,
+             * but if it is the current question,
+             * it also receives the current styling.
+             */
 
             if (
                 states[index] ===
@@ -2910,7 +2479,7 @@ function updateRosco() {
 
             }
 
-            if (
+            else if (
                 states[index] ===
                 "wrong"
             ) {
@@ -2921,13 +2490,28 @@ function updateRosco() {
 
             }
 
-            if (
+            else if (
                 states[index] ===
                 "passed"
             ) {
 
                 element.classList.add(
                     "passed"
+                );
+
+            }
+
+
+            if (
+                index === currentIndex &&
+                states[index] !==
+                "correct" &&
+                states[index] !==
+                "wrong"
+            ) {
+
+                element.classList.add(
+                    "current"
                 );
 
             }
@@ -2939,22 +2523,35 @@ function updateRosco() {
 
 
 /* =========================================================
-   CHECK
+   CHECK ANSWER
 ========================================================= */
 
 function checkAnswer() {
+
+    /*
+     * IMPORTANT FIX:
+     *
+     * A question can be checked if it is
+     * "pending" OR "passed".
+     *
+     * Previously only "pending" was allowed.
+     */
 
     if (
         states[currentIndex] !== "pending" &&
         states[currentIndex] !== "passed"
     ) {
+
         return;
+
     }
+
 
     const typed =
         normalizeText(
             answerInput.value
         );
+
 
     if (!typed) {
 
@@ -2967,14 +2564,24 @@ function checkAnswer() {
         answerInput.focus();
 
         return;
+
     }
+
 
     const correct =
         normalizeText(
-            questions[currentIndex].answer
+            questions[currentIndex]
+                .answer
         );
 
-    if (typed === correct) {
+
+    if (
+        typed === correct
+    ) {
+
+        /*
+         * Correct answer
+         */
 
         states[currentIndex] =
             "correct";
@@ -2987,43 +2594,64 @@ function checkAnswer() {
         feedback.className =
             "feedback correct";
 
-    } else {
+    }
+
+    else {
+
+        /*
+         * Wrong answer
+         */
 
         states[currentIndex] =
             "wrong";
 
         feedback.textContent =
             "✗ Incorrect — Answer: " +
-            questions[currentIndex].answer;
+            questions[currentIndex]
+                .answer;
 
         feedback.className =
             "feedback wrong";
+
     }
 
-    answerInput.disabled = true;
 
-    checkButton.disabled = true;
+    answerInput.disabled =
+        true;
 
-    passButton.disabled = true;
+    checkButton.disabled =
+        true;
+
+    passButton.disabled =
+        true;
 
     updateScore();
 
     updateRosco();
 
+
     setTimeout(
         goToNextQuestion,
         1300
     );
+
 }
+
+
 /* =========================================================
-   PASS
+   PASS QUESTION
 ========================================================= */
 
 function passQuestion() {
 
+    /*
+     * A question can only be passed if it
+     * has not already been answered.
+     */
+
     if (
-        states[currentIndex] !==
-        "pending"
+        states[currentIndex] !== "pending" &&
+        states[currentIndex] !== "passed"
     ) {
 
         return;
@@ -3052,6 +2680,8 @@ function passQuestion() {
         true;
 
 
+    updateScore();
+
     updateRosco();
 
 
@@ -3064,10 +2694,16 @@ function passQuestion() {
 
 
 /* =========================================================
-   NEXT
+   NEXT QUESTION
 ========================================================= */
 
 function goToNextQuestion() {
+
+    /*
+     * FIRST:
+     * Find a question that has never been
+     * attempted.
+     */
 
     let nextPending =
         findNextState("pending");
@@ -3087,6 +2723,12 @@ function goToNextQuestion() {
     }
 
 
+    /*
+     * SECOND:
+     * If there are no pending questions,
+     * return to questions that were passed.
+     */
+
     let nextPassed =
         findNextState("passed");
 
@@ -3104,6 +2746,11 @@ function goToNextQuestion() {
 
     }
 
+
+    /*
+     * If there are no pending or passed
+     * questions, the game is complete.
+     */
 
     finishGame();
 
@@ -3142,7 +2789,7 @@ function findNextState(target) {
 
 
 /* =========================================================
-   SCORE
+   UPDATE SCORE
 ========================================================= */
 
 function updateScore() {
@@ -3150,6 +2797,14 @@ function updateScore() {
     scoreElement.textContent =
         score;
 
+
+    /*
+     * Remaining includes both:
+     *
+     * pending = not attempted
+     *
+     * passed = still needs to be solved
+     */
 
     const remaining =
         states.filter(
@@ -3166,7 +2821,7 @@ function updateScore() {
 
 
 /* =========================================================
-   END
+   FINISH GAME
 ========================================================= */
 
 function finishGame() {
@@ -3236,15 +2891,18 @@ startButton.addEventListener(
     startGame
 );
 
+
 restartButton.addEventListener(
     "click",
     startGame
 );
 
+
 checkButton.addEventListener(
     "click",
     checkAnswer
 );
+
 
 passButton.addEventListener(
     "click",
