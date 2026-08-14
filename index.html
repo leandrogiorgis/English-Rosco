@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>English Rosco - B1+/B2</title>
+
+    <style>
+
+        /* =====================================================
+           GENERAL
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #1e3a8a 0%,
+                    #0f172a 65%
+                );
+
+            color: #ffffff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .app {
+            width: 100%;
+            max-width: 1200px;
+
+            min-height: 90vh;
+
+            background: rgba(15, 23, 42, 0.97);
+
+            border: 1px solid #334155;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.45);
+
+            padding: 25px;
+
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .header {
+            text-align: center;
+
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+
+            font-size: clamp(30px, 5vw, 46px);
+
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            margin-top: 6px;
+
+            color: #94a3b8;
+
+            font-size: 16px;
+        }
+
+
+        /* =====================================================
+           START SCREEN
+        ===================================================== */
+
+        .start-screen {
+            min-height: 70vh;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 30px;
+        }
+
+        .start-screen h2 {
+            font-size: 34px;
+
+            margin-bottom: 15px;
+        }
+
+        .start-description {
+            max-width: 700px;
+
+            color: #cbd5e1;
+
+            font-size: 19px;
+
+            line-height: 1.65;
+
+            margin-bottom: 30px;
+        }
+
+        .start-info {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-bottom: 35px;
+        }
+
+        .info-chip {
+            background: #1e293b;
+
+            border: 1px solid #475569;
+
+            border-radius: 30px;
+
+            padding: 10px 18px;
+
+            color: #cbd5e1;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        button {
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 13px 22px;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.15s ease,
+                filter 0.15s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+
+            filter: brightness(1.1);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.45;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+            filter: none;
+        }
+
+        .start-button {
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 20px;
+
+            padding: 16px 35px;
+        }
+
+        .check-button {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .pass-button {
+            background: #ca8a04;
+
+            color: white;
+        }
+
+        .restart-button {
+            background: #7c3aed;
+
+            color: white;
+        }
+
+
+        /* =====================================================
+           GAME SCREEN
+        ===================================================== */
+
+        .game-screen {
+            display: none;
+        }
+
+
+        /* =====================================================
+           SCOREBOARD
+        ===================================================== */
+
+        .scoreboard {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 50px;
+
+            margin: 10px 0 5px;
+
+            font-size: 20px;
+        }
+
+        .score-value {
+            color: #4ade80;
+
+            font-weight: 700;
+        }
+
+        .remaining-value {
+            color: #facc15;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           ROSCO
+        ===================================================== */
+
+        .rosco-container {
+            position: relative;
+
+            width: min(650px, 82vw);
+
+            aspect-ratio: 1 / 1;
+
+            margin: 5px auto 20px;
+        }
+
+        .rosco {
+            position: absolute;
+
+            inset: 0;
+        }
+
+        .letter {
+            position: absolute;
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            transform:
+                translate(-50%, -50%);
+
+            background: #334155;
+
+            border: 3px solid #64748b;
+
+            color: white;
+
+            font-size: 21px;
+
+            font-weight: 700;
+
+            transition:
+                all 0.25s ease;
+
+            user-select: none;
+        }
+
+        .letter.current {
+            background: #2563eb;
+
+            border-color: #bfdbfe;
+
+            box-shadow:
+                0 0 15px #3b82f6,
+                0 0 35px rgba(59,130,246,0.7);
+
+            transform:
+                translate(-50%, -50%)
+                scale(1.18);
+
+            z-index: 5;
+        }
+
+        .letter.correct {
+            background: #16a34a;
+
+            border-color: #86efac;
+        }
+
+        .letter.wrong {
+            background: #dc2626;
+
+            border-color: #fca5a5;
+        }
+
+        .letter.passed {
+            background: #ca8a04;
+
+            border-color: #fde047;
+        }
+
+
+        /* =====================================================
+           ROSCO CENTER
+        ===================================================== */
+
+        .rosco-center {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            width: 215px;
+            height: 215px;
+
+            border-radius: 50%;
+
+            background: #020617;
+
+            border: 3px solid #334155;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            box-shadow:
+                inset 0 0 35px rgba(0,0,0,0.5);
+        }
+
+        .center-label {
+            color: #64748b;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 5px;
+        }
+
+        .current-letter {
+            font-size: 72px;
+
+            font-weight: 800;
+
+            color: #60a5fa;
+
+            line-height: 1;
+        }
+
+
+        /* =====================================================
+           QUESTION PANEL
+        ===================================================== */
+
+        .question-panel {
+            max-width: 850px;
+
+            margin: 0 auto;
+
+            background: #1e293b;
+
+            border: 1px solid #334155;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            text-align: center;
+        }
+
+        .question-label {
+            color: #94a3b8;
+
+            font-size: 15px;
+
+            margin-bottom: 12px;
+        }
+
+        .question {
+            min-height: 75px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 24px;
+
+            line-height: 1.45;
+        }
+
+
+        /* =====================================================
+           ANSWER AREA
+        ===================================================== */
+
+        .answer-area {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: stretch;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .answer-input {
+            flex: 1;
+
+            max-width: 560px;
+
+            min-width: 0;
+
+            padding: 14px 16px;
+
+            border-radius: 10px;
+
+            border: 2px solid #475569;
+
+            background: #020617;
+
+            color: white;
+
+            font-size: 19px;
+
+            text-align: center;
+
+            outline: none;
+        }
+
+        .answer-input::placeholder {
+            color: #64748b;
+        }
+
+        .answer-input:focus {
+            border-color: #60a5fa;
+
+            box-shadow:
+                0 0 0 3px rgba(59,130,246,0.15);
+        }
+
+        .answer-input:disabled {
+            opacity: 0.7;
+        }
+
+
+        /* =====================================================
+           FEEDBACK
+        ===================================================== */
+
+        .feedback {
+            min-height: 38px;
+
+            margin-top: 15px;
+
+            font-size: 21px;
+
+            font-weight: 700;
+        }
+
+        .feedback.correct {
+            color: #4ade80;
+        }
+
+        .feedback.wrong {
+            color: #f87171;
+        }
+
+        .feedback.pass {
+            color: #facc15;
+        }
+
+
+        /* =====================================================
+           PASS AREA
+        ===================================================== */
+
+        .pass-area {
+            margin-top: 10px;
+        }
+
+
+        /* =====================================================
+           END SCREEN
+        ===================================================== */
+
+        .end-screen {
+            display: none;
+
+            min-height: 70vh;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 30px;
+        }
+
+        .end-screen h2 {
+            font-size: 36px;
+
+            margin-bottom: 10px;
+        }
+
+        .final-score {
+            font-size: 76px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            color: #4ade80;
+
+            margin: 25px 0;
+        }
+
+        .final-message {
+            font-size: 23px;
+
+            color: #cbd5e1;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 8px;
+            }
+
+            .app {
+                padding: 15px;
+
+                border-radius: 18px;
+            }
+
+            .scoreboard {
+                gap: 25px;
+
+                font-size: 17px;
+            }
+
+            .rosco-container {
+                width: 94vw;
+            }
+
+            .letter {
+                width: 43px;
+                height: 43px;
+
+                font-size: 16px;
+            }
+
+            .rosco-center {
+                width: 145px;
+                height: 145px;
+            }
+
+            .current-letter {
+                font-size: 50px;
+            }
+
+            .center-label {
+                font-size: 10px;
+            }
+
+            .question {
+                font-size: 19px;
+            }
+
+            .answer-area {
+                flex-direction: column;
+            }
+
+            .answer-input {
+                width: 100%;
+
+                max-width: none;
+            }
+
+            .check-button {
+                width: 100%;
+            }
+
+        }
+
+
+        /* =====================================================
+           VERY SMALL SCREENS
+        ===================================================== */
+
+        @media (max-width: 420px) {
+
+            .letter {
+                width: 38px;
+                height: 38px;
+
+                font-size: 14px;
+            }
+
+            .rosco-center {
+                width: 125px;
+                height: 125px;
+            }
+
+            .current-letter {
+                font-size: 43px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <h1>
+            English Rosco
+        </h1>
+
+        <div class="subtitle">
+            B1+ / B2 Vocabulary Challenge
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         START SCREEN
+    ====================================================== -->
+
+    <section
+        id="startScreen"
+        class="start-screen"
+    >
+
+        <h2>
+            Are you ready?
+        </h2>
+
+
+        <p class="start-description">
+
+            Find the word that matches each definition.
+            Type your answer and press
+            <strong>ENTER</strong>
+            or
+            <strong>CHECK ANSWER</strong>.
+
+            Some answers are phrasal verbs.
+
+            You can use
+            <strong>PASS</strong>
+            if you want to come back to a letter later.
+
+        </p>
+
+
+        <div class="start-info">
+
+            <div class="info-chip">
+                26 Letters
+            </div>
+
+            <div class="info-chip">
+                B1+ / B2
+            </div>
+
+            <div class="info-chip">
+                Phrasal Verbs
+            </div>
+
+            <div class="info-chip">
+                No Timer
+            </div>
+
+        </div>
+
+
+        <button
+            id="startButton"
+            class="start-button"
+            type="button"
+        >
+            START GAME
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         GAME SCREEN
+    ====================================================== -->
+
+    <main
+        id="gameScreen"
+        class="game-screen"
+    >
+
+
+        <!-- SCORE -->
+
+        <div class="scoreboard">
+
+            <div>
+                Score:
+                <span
+                    id="score"
+                    class="score-value"
+                >
+                    0
+                </span>
+            </div>
+
+
+            <div>
+                Remaining:
+                <span
+                    id="remaining"
+                    class="remaining-value"
+                >
+                    26
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- ROSCO -->
+
+        <div class="rosco-container">
+
+            <div
+                id="rosco"
+                class="rosco"
+            >
+            </div>
+
+
+            <div class="rosco-center">
+
+                <div class="center-label">
+                    CURRENT LETTER
+                </div>
+
+                <div
+                    id="currentLetter"
+                    class="current-letter"
+                >
+                    A
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <section class="question-panel">
+
+            <div class="question-label">
+                The answer begins with this letter:
+            </div>
+
+
+            <div
+                id="question"
+                class="question"
+            >
+                Question
+            </div>
+
+
+            <!-- ANSWER -->
+
+            <div class="answer-area">
+
+                <input
+                    id="answerInput"
+                    class="answer-input"
+                    type="text"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder="Type your answer..."
+                    aria-label="Type your answer"
+                >
+
+
+                <button
+                    id="checkButton"
+                    class="check-button"
+                    type="button"
+                >
+                    CHECK ANSWER
+                </button>
+
+            </div>
+
+
+            <!-- FEEDBACK -->
+
+            <div
+                id="feedback"
+                class="feedback"
+                aria-live="polite"
+            >
+            </div>
+
+
+            <!-- PASS -->
+
+            <div class="pass-area">
+
+                <button
+                    id="passButton"
+                    class="pass-button"
+                    type="button"
+                >
+                    PASS →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         END SCREEN
+    ====================================================== -->
+
+    <section
+        id="endScreen"
+        class="end-screen"
+    >
+
+        <h2>
+            Rosco Complete!
+        </h2>
+
+
+        <div
+            id="finalScore"
+            class="final-score"
+        >
+            0 / 26
+        </div>
+
+
+        <div
+            id="finalMessage"
+            class="final-message"
+        >
+            Great job!
+        </div>
+
+
+        <button
+            id="restartButton"
+            class="restart-button"
+            type="button"
+        >
+            PLAY AGAIN
+        </button>
+
+    </section>
+
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   QUESTIONS
+   B1+ / B2
+========================================================= */
+
+const questions = [
+
+    {
+        letter: "A",
+        answers: [
+            "ANNOYED"
+        ],
+        question:
+            "If you are slightly angry because something is bothering you, you feel ______."
+    },
+
+    {
+        letter: "B",
+        answers: [
+            "BREAK DOWN"
+        ],
+        question:
+            "What phrasal verb means to stop working, especially when talking about a machine or vehicle?"
+    },
+
+    {
+        letter: "C",
+        answers: [
+            "CHALLENGE"
+        ],
+        question:
+            "Something difficult that tests your ability or skill is called a ______."
+    },
+
+    {
+        letter: "D",
+        answers: [
+            "DEAL WITH"
+        ],
+        question:
+            "Which phrasal verb means to take action to solve or manage a problem?"
+    },
+
+    {
+        letter: "E",
+        answers: [
+            "EXHAUSTED"
+        ],
+        question:
+            "If you are extremely tired and have almost no energy left, you are ______."
+    },
+
+    {
+        letter: "F",
+        answers: [
+            "FIGURE OUT"
+        ],
+        question:
+            "Which phrasal verb means to understand or find the answer to something?"
+    },
+
+    {
+        letter: "G",
+        answers: [
+            "GENERALLY"
+        ],
+        question:
+            "This adverb means 'in most cases' or 'usually'."
+    },
+
+    {
+        letter: "H",
+        answers: [
+            "HESITATE"
+        ],
+        question:
+            "What verb means to pause before doing or saying something because you are uncertain?"
+    },
+
+    {
+        letter: "I",
+        answers: [
+            "IMPRESSIVE"
+        ],
+        question:
+            "Something that causes admiration because it is very good or remarkable is ______."
+    },
+
+    {
+        letter: "J",
+        answers: [
+            "JEALOUS"
+        ],
+        question:
+            "If you are unhappy because someone has something that you would like to have, you are ______."
+    },
+
+    {
+        letter: "K",
+        answers: [
+            "KEEP UP"
+        ],
+        question:
+            "Which phrasal verb means to continue at the same speed or level as someone or something?"
+    },
+
+    {
+        letter: "L",
+        answers: [
+            "LIKELY"
+        ],
+        question:
+            "If something will probably happen, it is ______ to happen."
+    },
+
+    {
+        letter: "M",
+        answers: [
+            "MISUNDERSTAND"
+        ],
+        question:
+            "What verb means to understand something incorrectly?"
+    },
+
+    {
+        letter: "N",
+        answers: [
+            "NEGOTIATE"
+        ],
+        question:
+            "What verb means to discuss something in order to reach an agreement?"
+    },
+
+    {
+        letter: "O",
+        answers: [
+            "OVERCOME"
+        ],
+        question:
+            "What verb means to successfully deal with or defeat a difficult problem?"
+    },
+
+    {
+        letter: "P",
+        answers: [
+            "PUT OFF"
+        ],
+        question:
+            "Which phrasal verb means to postpone something until a later time?"
+    },
+
+    {
+        letter: "Q",
+        answers: [
+            "QUALIFIED"
+        ],
+        question:
+            "If someone has the necessary skills, knowledge or training for a job, they are ______."
+    },
+
+    {
+        letter: "R",
+        answers: [
+            "RELIABLE"
+        ],
+        question:
+            "Someone or something that can be trusted to do what is expected is ______."
+    },
+
+    {
+        letter: "S",
+        answers: [
+            "SETTLE DOWN"
+        ],
+        question:
+            "Which phrasal verb means to become calmer or to start living a quieter, more stable life?"
+    },
+
+    {
+        letter: "T",
+        answers: [
+            "THOROUGH"
+        ],
+        question:
+            "If you are very careful and complete, paying attention to every detail, you are ______."
+    },
+
+    {
+        letter: "U",
+        answers: [
+            "UNEXPECTED"
+        ],
+        question:
+            "Something that happens without being predicted or anticipated is ______."
+    },
+
+    {
+        letter: "V",
+        answers: [
+            "VERSATILE"
+        ],
+        question:
+            "Someone or something that can be used for many different purposes is ______."
+    },
+
+    {
+        letter: "W",
+        answers: [
+            "WITHDRAW"
+        ],
+        question:
+            "What verb means to remove yourself or something from a situation, place or activity?"
+    },
+
+    {
+        letter: "X",
+        answers: [
+            "XENOPHOBIA"
+        ],
+        question:
+            "What word describes fear or dislike of people from other countries or cultures?"
+    },
+
+    {
+        letter: "Y",
+        answers: [
+            "YIELD"
+        ],
+        question:
+            "What verb can mean to produce a result, such as 'This investment ______ a high return'?"
+    },
+
+    {
+        letter: "Z",
+        answers: [
+            "ZONE OUT"
+        ],
+        question:
+            "Which phrasal verb means to stop paying attention because your mind is somewhere else?"
+    }
+
+];
+
+
+/* =========================================================
+   GAME STATE
+========================================================= */
+
+let currentIndex = 0;
+
+let score = 0;
+
+/*
+   Possible states:
+
+   pending = not answered yet
+   correct = answered correctly
+   wrong   = answered incorrectly
+   passed  = skipped
+*/
+
+let states = [];
+
+
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
+
+const startScreen =
+    document.getElementById("startScreen");
+
+const gameScreen =
+    document.getElementById("gameScreen");
+
+const endScreen =
+    document.getElementById("endScreen");
+
+const rosco =
+    document.getElementById("rosco");
+
+const currentLetter =
+    document.getElementById("currentLetter");
+
+const questionElement =
+    document.getElementById("question");
+
+const answerInput =
+    document.getElementById("answerInput");
+
+const checkButton =
+    document.getElementById("checkButton");
+
+const passButton =
+    document.getElementById("passButton");
+
+const feedback =
+    document.getElementById("feedback");
+
+const scoreElement =
+    document.getElementById("score");
+
+const remainingElement =
+    document.getElementById("remaining");
+
+const finalScore =
+    document.getElementById("finalScore");
+
+const finalMessage =
+    document.getElementById("finalMessage");
+
+const startButton =
+    document.getElementById("startButton");
+
+const restartButton =
+    document.getElementById("restartButton");
+
+
+/* =========================================================
+   NORMALIZE TEXT
+========================================================= */
+
+function normalizeText(text) {
+
+    return text
+        .trim()
+        .toUpperCase()
+        .replace(/[.,!?;:'"]/g, "")
+        .replace(/\s+/g, " ");
+
+}
+
+
+/* =========================================================
+   START GAME
+========================================================= */
+
+function startGame() {
+
+    currentIndex = 0;
+
+    score = 0;
+
+    states =
+        Array(questions.length)
+        .fill("pending");
+
+    startScreen.style.display =
+        "none";
+
+    endScreen.style.display =
+        "none";
+
+    gameScreen.style.display =
+        "block";
+
+    createRosco();
+
+    updateScore();
+
+    showQuestion();
+
+}
+
+
+/* =========================================================
+   CREATE ROSCO
+========================================================= */
+
+function createRosco() {
+
+    rosco.innerHTML = "";
+
+    const total =
+        questions.length;
+
+    questions.forEach(
+        (item, index) => {
+
+            const angle =
+                (index / total) *
+                Math.PI *
+                2 -
+                Math.PI / 2;
+
+            const radius =
+                44;
+
+            const x =
+                50 +
+                radius *
+                Math.cos(angle);
+
+            const y =
+                50 +
+                radius *
+                Math.sin(angle);
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "letter";
+
+            element.id =
+                "letter-" + index;
+
+            element.textContent =
+                item.letter;
+
+            element.style.left =
+                x + "%";
+
+            element.style.top =
+                y + "%";
+
+            rosco.appendChild(element);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SHOW QUESTION
+========================================================= */
+
+function showQuestion() {
+
+    const item =
+        questions[currentIndex];
+
+    currentLetter.textContent =
+        item.letter;
+
+    questionElement.textContent =
+        item.question;
+
+    answerInput.value =
+        "";
+
+    answerInput.disabled =
+        false;
+
+    checkButton.disabled =
+        false;
+
+    passButton.disabled =
+        false;
+
+    feedback.textContent =
+        "";
+
+    feedback.className =
+        "feedback";
+
+    updateRosco();
+
+    /*
+       Give the keyboard focus to the input.
+    */
+
+    setTimeout(
+        () => answerInput.focus(),
+        50
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE ROSCO
+========================================================= */
+
+function updateRosco() {
+
+    questions.forEach(
+        (item, index) => {
+
+            const element =
+                document.getElementById(
+                    "letter-" + index
+                );
+
+            element.className =
+                "letter";
+
+            if (
+                index === currentIndex &&
+                states[index] === "pending"
+            ) {
+
+                element.classList.add(
+                    "current"
+                );
+
+            }
+
+            if (
+                states[index] ===
+                "correct"
+            ) {
+
+                element.classList.add(
+                    "correct"
+                );
+
+            }
+
+            if (
+                states[index] ===
+                "wrong"
+            ) {
+
+                element.classList.add(
+                    "wrong"
+                );
+
+            }
+
+            if (
+                states[index] ===
+                "passed"
+            ) {
+
+                element.classList.add(
+                    "passed"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CHECK ANSWER
+========================================================= */
+
+function checkAnswer() {
+
+    if (
+        states[currentIndex] !==
+        "pending"
+    ) {
+        return;
+    }
+
+    const typed =
+        normalizeText(
+            answerInput.value
+        );
+
+    /*
+       Do nothing if the user has not typed anything.
+    */
+
+    if (!typed) {
+
+        feedback.textContent =
+            "Please type an answer.";
+
+        feedback.className =
+            "feedback wrong";
+
+        answerInput.focus();
+
+        return;
+
+    }
+
+
+    const acceptedAnswers =
+        questions[currentIndex]
+            .answers
+            .map(normalizeText);
+
+
+    const isCorrect =
+        acceptedAnswers.includes(
+            typed
+        );
+
+
+    /* =====================================================
+       CORRECT
+    ===================================================== */
+
+    if (isCorrect) {
+
+        states[currentIndex] =
+            "correct";
+
+        score++;
+
+        feedback.textContent =
+            "✓ Correct!";
+
+        feedback.className =
+            "feedback correct";
+
+    }
+
+
+    /* =====================================================
+       WRONG
+    ===================================================== */
+
+    else {
+
+        states[currentIndex] =
+            "wrong";
+
+        feedback.textContent =
+            "✗ Incorrect — Answer: " +
+            questions[currentIndex]
+                .answers[0];
+
+        feedback.className =
+            "feedback wrong";
+
+    }
+
+
+    answerInput.disabled =
+        true;
+
+    checkButton.disabled =
+        true;
+
+    passButton.disabled =
+        true;
+
+    updateScore();
+
+    updateRosco();
+
+
+    /*
+       Wait so the class can see the result.
+    */
+
+    setTimeout(
+        goToNextQuestion,
+        1300
+    );
+
+}
+
+
+/* =========================================================
+   PASS QUESTION
+========================================================= */
+
+function passQuestion() {
+
+    if (
+        states[currentIndex] !==
+        "pending"
+    ) {
+        return;
+    }
+
+    states[currentIndex] =
+        "passed";
+
+    feedback.textContent =
+        "Passed — we'll come back to this one.";
+
+    feedback.className =
+        "feedback pass";
+
+    answerInput.disabled =
+        true;
+
+    checkButton.disabled =
+        true;
+
+    passButton.disabled =
+        true;
+
+    updateScore();
+
+    updateRosco();
+
+
+    setTimeout(
+        goToNextQuestion,
+        700
+    );
+
+}
+
+
+/* =========================================================
+   FIND NEXT QUESTION
+========================================================= */
+
+function goToNextQuestion() {
+
+    /*
+       First priority:
+       unanswered questions.
+    */
+
+    let nextPending =
+        findNextState("pending");
+
+    if (nextPending !== -1) {
+
+        currentIndex =
+            nextPending;
+
+        showQuestion();
+
+        return;
+
+    }
+
+
+    /*
+       If there are no pending questions,
+       return to passed questions.
+    */
+
+    let nextPassed =
+        findNextState("passed");
+
+    if (nextPassed !== -1) {
+
+        currentIndex =
+            nextPassed;
+
+        showQuestion();
+
+        return;
+
+    }
+
+
+    /*
+       Nothing remains.
+    */
+
+    finishGame();
+
+}
+
+
+/* =========================================================
+   FIND STATE
+========================================================= */
+
+function findNextState(targetState) {
+
+    for (
+        let offset = 1;
+        offset <= questions.length;
+        offset++
+    ) {
+
+        const index =
+            (currentIndex + offset) %
+            questions.length;
+
+        if (
+            states[index] ===
+            targetState
+        ) {
+
+            return index;
+
+        }
+
+    }
+
+    return -1;
+
+}
+
+
+/* =========================================================
+   UPDATE SCORE
+========================================================= */
+
+function updateScore() {
+
+    scoreElement.textContent =
+        score;
+
+
+    const remaining =
+        states.filter(
+            state =>
+                state === "pending" ||
+                state === "passed"
+        ).length;
+
+
+    remainingElement.textContent =
+        remaining;
+
+}
+
+
+/* =========================================================
+   FINISH GAME
+========================================================= */
+
+function finishGame() {
+
+    gameScreen.style.display =
+        "none";
+
+    endScreen.style.display =
+        "flex";
+
+
+    finalScore.textContent =
+        score +
+        " / " +
+        questions.length;
+
+
+    const percentage =
+        (score /
+        questions.length) *
+        100;
+
+
+    if (percentage >= 90) {
+
+        finalMessage.textContent =
+            "Outstanding! Your vocabulary is excellent.";
+
+    }
+
+    else if (percentage >= 75) {
+
+        finalMessage.textContent =
+            "Great job! You have a strong B1/B2 vocabulary.";
+
+    }
+
+    else if (percentage >= 60) {
+
+        finalMessage.textContent =
+            "Good work! Keep building your vocabulary.";
+
+    }
+
+    else {
+
+        finalMessage.textContent =
+            "Good effort! Keep practising and improving.";
+
+    }
+
+}
+
+
+/* =========================================================
+   RESTART
+========================================================= */
+
+function restartGame() {
+
+    endScreen.style.display =
+        "none";
+
+    startGame();
+
+}
+
+
+/* =========================================================
+   BUTTON EVENTS
+========================================================= */
+
+startButton.addEventListener(
+    "click",
+    startGame
+);
+
+checkButton.addEventListener(
+    "click",
+    checkAnswer
+);
+
+passButton.addEventListener(
+    "click",
+    passQuestion
+);
+
+restartButton.addEventListener(
+    "click",
+    restartGame
+);
+
+
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
+answerInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            checkAnswer();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+states =
+    Array(questions.length)
+    .fill("pending");
+
+createRosco();
+
+</script>
+
+</body>
+</html>
